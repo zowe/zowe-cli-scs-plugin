@@ -20,6 +20,9 @@ import org.zowe.pipelines.nodejs.models.SemverLevel
 def PRODUCT_NAME = "Zowe CLI"
 
 node('ca-jenkins-agent') {
+    // This plugin's tests requires the CLI be installed, so install the CLI
+    sh "npm install --global @zowe/cli"
+
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)
 
