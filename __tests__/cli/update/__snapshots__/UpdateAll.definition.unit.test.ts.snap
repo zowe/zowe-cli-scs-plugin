@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`secure-credential-store update command definition should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "u",
+  ],
+  "description": "Updates all plain text profiles to be securely stored",
+  "name": "update",
+  "summary": "Updates all plain text profiles to be securely stored",
+  "type": "command",
+}
+`;

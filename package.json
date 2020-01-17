@@ -1,0 +1,139 @@
+{
+  "name": "@zowe/secure-credential-store-for-zowe-cli",
+  "version": "4.0.0",
+  "description": "Secure credential storage plugin for Zowe CLI",
+  "author": "Broadcom",
+  "license": "EPL-2.0",
+  "repository": "",
+  "keywords": [
+    "credential manager",
+    "secure store",
+    "password"
+  ],
+  "publishConfig": {
+    "registry": ""
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "imperative": {
+    "configurationModule": "lib/imperative/configuration.js"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
+    "lint": "npm run lint:src && npm run lint:tests",
+    "lint:src": "tslint --format stylish --exclude \"**/__tests__/**/*.ts\" \"src/**/*.ts\"",
+    "lint:tests": "tslint --format stylish -c ./tslint-tests.json --exclude \"node_modules/**/*\" --exclude \"**__tests__/__results__/**\" \"**/__tests__/**/*.ts\"",
+    "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",
+    "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
+    "prepublishOnly": "npm run build",
+    "test": "npm run test:unit",
+    "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" ",
+    "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false --runInBand",
+    "coverage": "jest --coverage",
+    "watch": "tsc --pretty --watch",
+    "watch:test": "jest --watch",
+    "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install .",
+    "postinstall": "zowe config set CredentialManager @zowe/secure-credential-store-for-zowe-cli && echo \"The Secure Credential Store has been successfully installed. The CLI will now use the Node Keytar module to encrypt your local credentials. CLI Profiles that you have created will need to be updated because their credentials are stored in plain text and not accessible from the credential manager.  Refer to the available options in the help text to update profiles 'zowe scs update -h'.\" 1>&2",
+    "preuninstall": "zowe config reset CredentialManager",
+    "postuninstall": "echo \"CLI Profiles that you have created will need to be recreated because their credentials are stored in the credential manager that has been uninstalled. Refer to the available options in the help text to create a new profile 'zowe profiles create zosmf-profile -h'.\" 1>&2"
+  },
+  "bundleDependencies": [
+    "@zowe/imperative",
+    "keytar"
+  ],
+  "dependencies": {
+    "keytar": "5.0.0"
+  },
+  "peerDependencies": {
+    "@zowe/cli": ">=5.0.0",
+    "@zowe/imperative": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
+    "@types/jest": "^24.0.5",
+    "@types/js-yaml": "^3.11.2",
+    "@types/jsonfile": "^4.0.1",
+    "@types/node": "^8.10.59",
+    "@types/uuid": "^3.4.6",
+    "@types/yargs": "8.0.2",
+    "@zowe/imperative": "4.4.5",
+    "coveralls": "^3.0.7",
+    "env-cmd": "^8.0.2",
+    "fs-extra": "^5.0.0",
+    "glob": "7.1.1",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0",
+    "jest-environment-node": "^24.9.0",
+    "jest-environment-node-debug": "^2.0.0",
+    "jest-html-reporter": "^2.7.0",
+    "jest-junit": "^6.3.0",
+    "jest-stare": "^1.25.0",
+    "js-yaml": "^3.13.1",
+    "jsonfile": "^5.0.0",
+    "shebang-regex": "^2.0.0",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^3.2.0",
+    "tslint": "^5.20.1",
+    "typedoc": "^0.15.2",
+    "typescript": "^3.7.2",
+    "uuid": "^3.3.3"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./__tests__/setUpJest.ts"
+    ],
+    "modulePathIgnorePatterns": [
+      "__tests__/__snapshots__/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/__results__"
+    ],
+    "transform": {
+      ".(ts)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!**/__tests__/**",
+      "!**/index.ts",
+      "!**/main.ts"
+    ],
+    "collectCoverage": false,
+    "reporters": [
+      "default",
+      "jest-junit",
+      "jest-stare",
+      "jest-html-reporter"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "cobertura"
+    ],
+    "coverageDirectory": "<rootDir>/__tests__/__results__/unit/coverage"
+  },
+  "jest-stare": {
+    "resultDir": "__tests__/__results__/jest-stare"
+  },
+  "jest-junit": {
+    "output": "__tests__/__results__/junit.xml"
+  },
+  "jest-html-reporter": {
+    "pageTitle": "SCS Plugin for Zowe CLI Test Results",
+    "outputPath": "__tests__/__results__/results.html",
+    "includeFailureMsg": true
+  }
+}

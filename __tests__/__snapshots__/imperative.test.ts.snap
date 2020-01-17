@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Imperative config should match the snapshot 1`] = `
+Object {
+  "definitions": Array [
+    Object {
+      "aliases": Array [
+        "u",
+      ],
+      "description": "Updates all plain text profiles to be securely stored",
+      "handler": "user/specific/path",
+      "name": "update",
+      "summary": "Updates all plain text profiles to be securely stored",
+      "type": "command",
+    },
+  ],
+  "name": "secure-credential-store",
+  "overrides": Object {
+    "CredentialManager": "./credentials/KeytarCredentialManager",
+  },
+  "pluginAliases": Array [
+    "scs",
+  ],
+  "pluginHealthCheck": "./lib/imperative/healthCheckHandler",
+  "pluginSummary": "Work with securely stored credentials",
+  "productDisplayName": "Secure Credential Store Plugin",
+  "rootCommandDescription": "Store credentials securely in profiles by encrypting them",
+}
+`;

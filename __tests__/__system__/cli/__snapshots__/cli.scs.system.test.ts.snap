@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`secure-credential-store command should display the help 1`] = `
+"
+ DESCRIPTION
+ -----------
+
+   Store credentials securely in profiles by encrypting them
+
+ USAGE
+ -----
+
+   zowe secure-credential-store <command>
+
+   Where <command> is one of the following:
+
+ COMMANDS
+ --------
+
+   update | u Updates all plain text profiles to be securely stored
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce JSON formatted data from a command
+
+   --help  | -h (boolean)
+
+      Display help text
+
+   --help-examples  (boolean)
+
+      Display examples for all the commands in a the group
+
+   --help-web  | --hw (boolean)
+
+      Display HTML help in browser
+
+{
+  \\"success\\": true,
+  \\"exitCode\\": 0,
+  \\"message\\": \\"The help was constructed for command: secure-credential-store.\\",
+  \\"stdout\\": \\"\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Store credentials securely in profiles by encrypting them\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe secure-credential-store <command>\\\\n\\\\n   Where <command> is one of the following:\\\\n\\\\n COMMANDS\\\\n --------\\\\n\\\\n   update | u Updates all plain text profiles to be securely stored\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a the group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n\\",
+  \\"stderr\\": \\"\\",
+  \\"data\\": \\"\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Store credentials securely in profiles by encrypting them\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe secure-credential-store <command>\\\\n\\\\n   Where <command> is one of the following:\\\\n\\\\n COMMANDS\\\\n --------\\\\n\\\\n   update | u Updates all plain text profiles to be securely stored\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a the group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n\\"
+}"
+`;
+
+exports[`secure-credential-store command should fail with invalid command 1`] = `
+"Command Error:
+Unknown argument: updateall
+Command failed due to improper syntax
+Command entered: \\"zowe secure-credential-store updateall\\"
+Use \\"zowe secure-credential-store --help\\" to view groups, commands, and options.
+Error Details:
+Unknown argument: updateall
+"
+`;
