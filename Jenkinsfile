@@ -138,7 +138,7 @@ node('ca-jenkins-agent') {
             sh "zowe plugins install ."
             writeFile file:TEST_PROPERTIES_FILE, text:INTEGRATION_TEST_PROPERTIES
             sh "chmod +x $TEST_SCRIPT && dbus-launch $TEST_SCRIPT"
-        }
+        },
         testResults: [dir: "${INTEGRATION_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - Integration Test Report"],
         junitOutput: INTEGRATION_JUNIT_OUTPUT
     )
