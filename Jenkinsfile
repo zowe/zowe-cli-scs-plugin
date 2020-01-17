@@ -77,6 +77,8 @@ node('ca-jenkins-agent') {
     def TEST_ROOT = "__tests__/__results__"
     def UNIT_TEST_ROOT = "$TEST_ROOT/unit"
     def UNIT_JUNIT_OUTPUT = "$UNIT_TEST_ROOT/junit.xml"
+    def INTEGRATION_TEST_ROOT = "$TEST_ROOT/system"
+    def INTEGRATION_JUNIT_OUTPUT = "$INTEGRATION_TEST_ROOT/junit.xml"
     
     // Perform a unit test and capture the results
     pipeline.test(
@@ -112,6 +114,25 @@ node('ca-jenkins-agent') {
             sourceEncoding: 'ASCII',
             zoomCoverageChart: false
         ]
+    )
+
+    // Perform an integration test and capture the results
+    pipeline.test(
+        name: "Integration",
+        operation: {
+            sh "npm run test:system"
+        },
+        environment: [
+            JEST_JUNIT_OUTPUT: INTEGRATION_JUNIT_OUTPUT,
+            JEST_SUIT_NAME: "Integration Tests",
+            JEST_JUNIT_ANCESTOR_SEPARATOR: " > ",
+            JEST_JUNIT_CLASSNAME: "Integration.{classname}",
+            JEST_JUNIT_TITLE: "{title}",
+            JEST_STARE_RESULT_DIR: "${INTEGRATION_TEST_ROOT}/jest-stare",
+            JEST_STARE_RESULT_HTML: "index.html"
+        ],
+        testResults: [dir: "${INTEGRATION_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - Integration Test Report"],
+        junitOutput: INTEGRATION_JUNIT_OUTPUT
     )
 
     //Upload Reports to Code Coverage
