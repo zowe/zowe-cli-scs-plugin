@@ -123,6 +123,9 @@ node('ca-jenkins-agent') {
             sh "npm run test:system"
         },
         environment: [
+            TEST_PROPERTIES_FILE: "./__tests__/__resources__/properties/custom_properties.yaml",
+            TEST_SCRIPT: "./jenkins/system_tests.sh",
+            INTEGRATION_TEST_PROPERTIES: "zosmf:\n  user: ibmuser\n  pass: plaintext\n  host: localhost\n  port: 12345\n\n"
             JEST_JUNIT_OUTPUT: INTEGRATION_JUNIT_OUTPUT,
             JEST_SUIT_NAME: "Integration Tests",
             JEST_JUNIT_ANCESTOR_SEPARATOR: " > ",
@@ -131,6 +134,11 @@ node('ca-jenkins-agent') {
             JEST_STARE_RESULT_DIR: "${INTEGRATION_TEST_ROOT}/jest-stare",
             JEST_STARE_RESULT_HTML: "index.html"
         ],
+        operation: {
+            sh "zowe plugins install ."
+            writeFile file:TEST_PROPERTIES_FILE, text:INTEGRATION_TEST_PROPERTIES
+            sh "chmod +x $TEST_SCRIPT && dbus-launch $TEST_SCRIPT"
+        }
         testResults: [dir: "${INTEGRATION_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - Integration Test Report"],
         junitOutput: INTEGRATION_JUNIT_OUTPUT
     )
