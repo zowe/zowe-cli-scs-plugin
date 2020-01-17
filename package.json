@@ -4,14 +4,14 @@
   "description": "Secure credential storage plugin for Zowe CLI",
   "author": "Broadcom",
   "license": "EPL-2.0",
-  "repository": "",
+  "repository": "https://github.com/zowe/zowe-cli-scs-plugin/",
   "keywords": [
     "credential manager",
     "secure store",
     "password"
   ],
   "publishConfig": {
-    "registry": ""
+    "registry": "https://zowe.jfrog.io/zowe/api/npm/npm-local-release/"
   },
   "files": [
     "lib"
@@ -49,7 +49,7 @@
     "keytar": "5.0.0"
   },
   "peerDependencies": {
-    "@zowe/cli": ">=5.0.0",
+    "@zowe/cli": "^6.0.0",
     "@zowe/imperative": "^4.0.0"
   },
   "devDependencies": {
@@ -59,12 +59,12 @@
     "@types/jsonfile": "^4.0.1",
     "@types/node": "^8.10.59",
     "@types/uuid": "^3.4.6",
-    "@types/yargs": "8.0.2",
-    "@zowe/imperative": "4.4.5",
+    "@types/yargs": "^8.0.2",
+    "@zowe/imperative": "^4.5.0",
     "coveralls": "^3.0.7",
     "env-cmd": "^8.0.2",
     "fs-extra": "^5.0.0",
-    "glob": "7.1.1",
+    "glob": "^7.1.1",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
     "jest-environment-node": "^24.9.0",
@@ -83,7 +83,7 @@
     "uuid": "^3.3.3"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "jest": {
     "setupFilesAfterEnv": [
