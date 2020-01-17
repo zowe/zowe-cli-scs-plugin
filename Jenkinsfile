@@ -125,7 +125,7 @@ node('ca-jenkins-agent') {
         environment: [
             TEST_PROPERTIES_FILE: "./__tests__/__resources__/properties/custom_properties.yaml",
             TEST_SCRIPT: "./jenkins/system_tests.sh",
-            INTEGRATION_TEST_PROPERTIES: "zosmf:\n  user: ibmuser\n  pass: plaintext\n  host: localhost\n  port: 12345\n\n"
+            INTEGRATION_TEST_PROPERTIES: "zosmf:\n  user: ibmuser\n  pass: plaintext\n  host: localhost\n  port: 12345\n\n",
             JEST_JUNIT_OUTPUT: INTEGRATION_JUNIT_OUTPUT,
             JEST_SUIT_NAME: "Integration Tests",
             JEST_JUNIT_ANCESTOR_SEPARATOR: " > ",
