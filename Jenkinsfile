@@ -119,9 +119,6 @@ node('ca-jenkins-agent') {
     // Perform an integration test and capture the results
     pipeline.test(
         name: "Integration",
-        operation: {
-            sh "npm run test:system"
-        },
         environment: [
             TEST_PROPERTIES_FILE: "./__tests__/__resources__/properties/custom_properties.yaml",
             TEST_SCRIPT: "./jenkins/system_tests.sh",
