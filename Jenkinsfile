@@ -104,6 +104,7 @@ node('ca-jenkins-agent') {
             conditionalCoverageTargets: '70, 65, 60',
             failUnhealthy: false,
             failUnstable: false,
+            fileCoverageTargets: '80, 70, 50',
             lineCoverageTargets: '80, 70, 50',
             maxNumberOfBuilds: 20,
             methodCoverageTargets: '80, 70, 50',
