@@ -1,6 +1,17 @@
 const fs = require("fs");
 const path = require("path");
 
+// Check if local prebuilds folder exists
+const localDir = path.join(__dirname, "..", "prebuilds");
+if (!fs.existsSync(localDir)) {
+    process.exit(0);
+}
+
+// Delete local prebuilds folder if empty
+if (fs.readdirSync(localDir).length === 0) {
+    fs.rmdirSync(localDir);
+}
+
 // Function copied from prebuild-install
 function npmCache() {
     const env = process.env;
@@ -17,10 +28,4 @@ if (fs.existsSync(cacheDir)) {
             fs.unlinkSync(path.join(cacheDir, filename));
         }
     });
-}
-
-// Delete local prebuilds folder if empty
-const localDir = path.join(__dirname, "..", "prebuilds");
-if (fs.existsSync(localDir) && fs.readdirSync(localDir).length === 0) {
-    fs.rmdirSync(localDir);
 }
