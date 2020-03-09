@@ -15,6 +15,7 @@
   },
   "files": [
     "lib",
+    "prebuilds",
     "scripts/preinstall.js",
     "scripts/postinstall.js"
   ],
