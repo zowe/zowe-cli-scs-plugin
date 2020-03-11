@@ -37,7 +37,7 @@ export function runCliScript(scriptPath: string, testEnvironment: ITestEnvironme
         // Execute the command synchronously
         return spawnSync("sh", [`${scriptPath}`].concat(args), {cwd: testEnvironment.workingDir, env: childEnv});
     } else {
-        throw new Error(`The script file  ${scriptPath} doesn't exist`);
+        throw new Error(`The script file ${scriptPath} doesn't exist`);
 
     }
 }
