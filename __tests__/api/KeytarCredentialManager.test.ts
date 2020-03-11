@@ -27,7 +27,7 @@ describe("KeytarCredentialManager", () => {
       keytar.__setMockKeyring(C.TEST_CREDENTIALS);
     });
 
-    it("should be an instance of AbrstractCredentialManager", () => {
+    it("should be an instance of AbstractCredentialManager", () => {
       expect(manager instanceof AbstractCredentialManager).toBe(true);
     });
 
@@ -83,11 +83,11 @@ describe("KeytarCredentialManager", () => {
       expect(result).toEqual(C.PASS2);
     });
 
-    it("should fail load credentials that was not stored before", async () => {
+    it("should fail to load credentials that were not stored before if required", async () => {
       let err;
       let result;
       try {
-        result = await manager.load(C.ACC4);
+        result = await manager.load(C.ACC4, false);
       }
       catch (e) {
         err = e;
@@ -95,6 +95,19 @@ describe("KeytarCredentialManager", () => {
       expect(err).toBeDefined();
       expect(result).toBeUndefined();
       expect(err).toMatchSnapshot();
+    });
+
+    it("should not fail to load credentials that were not stored before if optional", async () => {
+      let err;
+      let result;
+      try {
+        result = await manager.load(C.ACC4, true);
+      }
+      catch (e) {
+        err = e;
+      }
+      expect(err).toBeUndefined();
+      expect(result).toBeNull();
     });
 
     it("should securely store credentials to the plugin service without any conflicts", async () => {
