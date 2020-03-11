@@ -1,8 +1,6 @@
 # Changelog
 
-## Current Changes
-
-- Update changelog. All future PRs should update this file with notable changes prior to merging.
+All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be documented in this file.
 
 ## `4.0.1`
  
