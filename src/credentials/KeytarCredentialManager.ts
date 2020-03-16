@@ -116,7 +116,7 @@ export = class KeytarCredentialManager extends AbstractCredentialManager {
    * @throws {@link ImperativeError} if keytar is not defined.
    * @throws {@link ImperativeError} when keytar.getPassword returns null or undefined.
    */
-  protected async loadCredentials(account: string): Promise<SecureCredential> {
+  protected async loadCredentials(account: string, optional?: boolean): Promise<SecureCredential> {
     this.checkForKeytar();
     // Helper function to handle all breaking changes
     const loadHelper = async (service: string) => {
@@ -164,7 +164,7 @@ export = class KeytarCredentialManager extends AbstractCredentialManager {
       }
     }
 
-    if (password == null) {
+    if (password == null && !optional) {
       throw new ImperativeError({
         msg: "Unable to load credentials.",
         additionalDetails: this.getMissingEntryMessage(account)
