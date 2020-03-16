@@ -81,14 +81,14 @@ export = class KeytarCredentialManager extends AbstractCredentialManager {
    * @returns {Promise<void>} A promise that the function has completed.
    */
   public async initialize(): Promise<void> {
-      try {
-          this.keytar = await import("keytar");
-      } catch (error) {
-          this.loadError = new ImperativeError({
-              msg: "Keytar not Installed",
-              causeErrors: error
-          });
-      }
+    try {
+      this.keytar = await import("keytar");
+    } catch (error) {
+      this.loadError = new ImperativeError({
+        msg: "Keytar not Installed",
+        causeErrors: error
+      });
+    }
   }
 
   /**
@@ -100,17 +100,10 @@ export = class KeytarCredentialManager extends AbstractCredentialManager {
    * @returns {Promise<void>} A promise that the function has completed.
    *
    * @throws {@link ImperativeError} if keytar is not defined.
-   * @throws {@link ImperativeError} when keytar.deletePassword returns false.
    */
   protected async deleteCredentials(account: string): Promise<void> {
     this.checkForKeytar();
-
-    if (!await this.deleteCredentialsHelper(account)) {
-      throw new ImperativeError({
-        msg: "Unable to delete credentials.",
-        additionalDetails: this.getMissingEntryMessage(account)
-      });
-    }
+    await this.deleteCredentialsHelper(account);
   }
 
   /**
@@ -215,17 +208,17 @@ export = class KeytarCredentialManager extends AbstractCredentialManager {
    * @throws {@link ImperativeError} when keytar is null or undefined.
    */
   private checkForKeytar(): void {
-      if (this.keytar == null) {
-          if (this.loadError == null) {
-              throw new ImperativeError({
-                  msg: "Keytar was not properly loaded due to an unknown cause."
-              }, {
-                  suppressReport: true
-              });
-          } else {
-              throw this.loadError;
-          }
+    if (this.keytar == null) {
+      if (this.loadError == null) {
+        throw new ImperativeError({
+          msg: "Keytar was not properly loaded due to an unknown cause."
+        }, {
+          suppressReport: true
+        });
+      } else {
+        throw this.loadError;
       }
+    }
   }
 
   private async deleteCredentialsHelper(account: string, skipPluginService?: boolean): Promise<boolean> {

@@ -21,12 +21,13 @@ def PRODUCT_NAME = "Zowe CLI"
 
 node('ca-jenkins-agent') {
     // This plugin's tests requires the CLI be installed, so install the CLI
+    sh "npm config set @zowe:registry https://zowe.jfrog.io/zowe/api/npm/npm-local-release"
     sh "npm install --global @zowe/cli"
 
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)
 
-    // Build admins, users that can approve the build and receieve emails for 
+    // Build admins, users that can approve the build and receieve emails for
     // all protected branch builds.
     pipeline.admins.add("tucker01", "gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn")
 
@@ -35,8 +36,8 @@ node('ca-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", level: SemverLevel.MINOR, devDependencies: ["@zowe/imperative": "latest"], aliasTags: ["zowe-v1-lts"]]//,
-        //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"]]
+        [name: "master", tag: "latest", level: SemverLevel.MINOR, devDependencies: ["@zowe/imperative": "latest"], aliasTags: ["zowe-v1-lts"]]
+        //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"]],
         //[name: "zowe-v1-lts", tag: "zowe-v1-lts", level: SemverLevel.MINOR, devDependencies: ["@zowe/imperative": "zowe-v1-lts"]]
     ])
 
@@ -77,9 +78,9 @@ node('ca-jenkins-agent') {
     def TEST_ROOT = "__tests__/__results__"
     def UNIT_TEST_ROOT = "$TEST_ROOT/unit"
     def UNIT_JUNIT_OUTPUT = "$UNIT_TEST_ROOT/junit.xml"
-    def INTEGRATION_TEST_ROOT = "$TEST_ROOT/system"
-    def INTEGRATION_JUNIT_OUTPUT = "$INTEGRATION_TEST_ROOT/junit.xml"
-    
+    def SYSTEM_TEST_ROOT = "$TEST_ROOT/system"
+    def SYSTEM_JUNIT_OUTPUT = "$SYSTEM_TEST_ROOT/junit.xml"
+
     // Perform a unit test and capture the results
     pipeline.test(
         name: "Unit",
@@ -88,7 +89,7 @@ node('ca-jenkins-agent') {
         },
         environment: [
             JEST_JUNIT_OUTPUT: UNIT_JUNIT_OUTPUT,
-            JEST_SUIT_NAME: "Unit Tests",
+            JEST_SUITE_NAME: "Unit Tests",
             JEST_JUNIT_ANCESTOR_SEPARATOR: " > ",
             JEST_JUNIT_CLASSNAME: "Unit.{classname}",
             JEST_JUNIT_TITLE: "{title}",
@@ -116,28 +117,27 @@ node('ca-jenkins-agent') {
         ]
     )
 
-    // Perform an integration test and capture the results
+    // Perform a system test and capture the results
     pipeline.test(
-        name: "Integration",
+        name: "System",
         environment: [
             TEST_PROPERTIES_FILE: "./__tests__/__resources__/properties/custom_properties.yaml",
-            TEST_SCRIPT: "./jenkins/system_tests.sh",
-            INTEGRATION_TEST_PROPERTIES: "zosmf:\n  user: ibmuser\n  pass: plaintext\n  host: localhost\n  port: 12345\n\n",
-            JEST_JUNIT_OUTPUT: INTEGRATION_JUNIT_OUTPUT,
-            JEST_SUIT_NAME: "Integration Tests",
+            SYSTEM_TEST_PROPERTIES: "zosmf:\n  user: ibmuser\n  pass: plaintext\n  host: localhost\n  port: 12345\n\n",
+            JEST_JUNIT_OUTPUT: SYSTEM_JUNIT_OUTPUT,
+            JEST_SUITE_NAME: "System Tests",
             JEST_JUNIT_ANCESTOR_SEPARATOR: " > ",
-            JEST_JUNIT_CLASSNAME: "Integration.{classname}",
+            JEST_JUNIT_CLASSNAME: "System.{classname}",
             JEST_JUNIT_TITLE: "{title}",
-            JEST_STARE_RESULT_DIR: "${INTEGRATION_TEST_ROOT}/jest-stare",
+            JEST_STARE_RESULT_DIR: "${SYSTEM_TEST_ROOT}/jest-stare",
             JEST_STARE_RESULT_HTML: "index.html"
         ],
         operation: {
-            sh "zowe plugins install ."
-            writeFile file:TEST_PROPERTIES_FILE, text:INTEGRATION_TEST_PROPERTIES
-            sh "chmod +x $TEST_SCRIPT && dbus-launch $TEST_SCRIPT"
+            writeFile file: TEST_PROPERTIES_FILE, text: SYSTEM_TEST_PROPERTIES
+            sh "npm run test:system"
         },
-        testResults: [dir: "${INTEGRATION_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - Integration Test Report"],
-        junitOutput: INTEGRATION_JUNIT_OUTPUT
+        testResults: [dir: "${SYSTEM_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - System Test Report"],
+        junitOutput: SYSTEM_JUNIT_OUTPUT,
+        shouldUnlockKeyring: true
     )
 
     //Upload Reports to Code Coverage

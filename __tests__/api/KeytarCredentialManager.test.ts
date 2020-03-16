@@ -57,19 +57,6 @@ describe("KeytarCredentialManager", () => {
       expect(keytar.__getMockKeyring()).toEqual(expected);
     });
 
-    it("should fail removing non-existing credentials", async () => {
-      let err;
-
-      try {
-        await manager.delete(C.ACC4);
-      }
-      catch (e) {
-        err = e;
-      }
-      expect(err).toBeDefined();
-      expect(err).toMatchSnapshot();
-    });
-
     it("should retrieve credentials from the storage from the provided test service", async () => {
       let err;
       let result;
@@ -108,6 +95,23 @@ describe("KeytarCredentialManager", () => {
       }
       expect(err).toBeUndefined();
       expect(result).toBeNull();
+    });
+
+    it("should silently fail to remove non-existing credentials", async () => {
+      const deleteSpy = jest.spyOn(KeytarCredentialManager.prototype as any, "deleteCredentialsHelper");
+      let err;
+
+      try {
+        await manager.delete(C.ACC4);
+      }
+      catch (e) {
+        err = e;
+      }
+      expect(err).toBeUndefined();
+      expect(deleteSpy).toHaveBeenCalled();
+      await deleteSpy.mock.results[0].value.then((value: boolean) => {
+        expect(value).toBe(false);
+      });
     });
 
     it("should securely store credentials to the plugin service without any conflicts", async () => {
