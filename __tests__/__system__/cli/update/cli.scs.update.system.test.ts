@@ -35,13 +35,7 @@ describe("secure-credential-store update command", () => {
   });
 
   it("should update plain text profiles successfully", async () => {
-    let response;
-    // Install plugin
-    response = await runCliScript(__dirname + "/__scripts__/install_plugin.sh", TEST_ENV, ["../../../../"]);
-    // expect(response.stderr.toString()).toBe(""); // Do not check for stderr since there might be warnings
-    expect(response.stdout.toString()).toContain("Installed");
-
-    response = await runCliScript(__dirname + "/__scripts__/update_success.sh", TEST_ENV);
+    const response = await runCliScript(__dirname + "/__scripts__/update_success.sh", TEST_ENV);
     expect(response.stderr.toString()).toBe("");
     expect(response.stdout.toString()).toContain(`Profile ("${PROFILE_NAME}" of type "zosmf") successfully written`);
     expect(response.status).toBe(0);
