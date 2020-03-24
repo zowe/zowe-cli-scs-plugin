@@ -74,7 +74,7 @@ node('ca-jenkins-agent') {
         timeout: [ time: 10, unit: 'MINUTES' ],
         archiveOperation: {
             // Bundle Keytar binaries
-            sh "sudo apt-get install jq"
+            sh "sudo apt-get install -y jq"
             def packageJson = readJSON file: "package.json"
             def keytarVer = packageJson.dependencies['keytar']
             withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
