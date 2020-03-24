@@ -70,10 +70,17 @@ node('ca-jenkins-agent') {
     )
 
     // Build the application
-    pipeline.build(timeout: [
-        time: 5,
-        unit: 'MINUTES'
-    ])
+    pipeline.build(
+        timeout: [ time: 10, unit: 'MINUTES' ],
+        archiveOperation: {
+            // Bundle Keytar binaries
+            def packageJson = readJSON file: "package.json"
+            def keytarVer = packageJson.dependencies['keytar']
+            withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
+                sh "bash jenkins/bundleKeytar.sh \"${USERNAME}:${TOKEN}\" ${keytarVer}"
+            }
+        }
+    )
 
     def TEST_ROOT = "__tests__/__results__"
     def UNIT_TEST_ROOT = "$TEST_ROOT/unit"
