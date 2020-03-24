@@ -4,7 +4,7 @@ All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be 
 
 ## `4.0.3`
 
-- Bundle Keytar binaries in NPM package so that plugin can be installed offline. Thanks @tjohnsonBCM
+- Bundle Keytar binaries in NPM package so that plugin can be installed offline. Thanks @awharn, @tjohnsonBCM
 
 ## `4.0.2`
 
