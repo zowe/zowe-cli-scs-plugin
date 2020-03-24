@@ -2,7 +2,7 @@
 set -e
 
 mkdir prebuilds && cd prebuilds
-curl -fsLO jq https://github.com/stedolan/jq/releases/latest/download/jq-linux64
+curl -fsL -o jq https://github.com/stedolan/jq/releases/latest/download/jq-linux64
 chmod +x ./jq
 
 curl -fs https://$1@api.github.com/repos/atom/node-keytar/releases/tags/v$2 |
