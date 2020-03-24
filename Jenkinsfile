@@ -70,17 +70,10 @@ node('ca-jenkins-agent') {
     )
 
     // Build the application
-    pipeline.build(
-        timeout: [ time: 10, unit: 'MINUTES' ],
-        archiveOperation: {
-            // Bundle Keytar binaries
-            def packageJson = readJSON file: "package.json"
-            def keytarVer = packageJson.dependencies['keytar']
-            withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
-                sh "bash jenkins/bundleKeytar.sh \"${USERNAME}:${TOKEN}\" ${keytarVer}"
-            }
-        }
-    )
+    pipeline.build(timeout: [
+        time: 5,
+        unit: 'MINUTES'
+    ])
 
     def TEST_ROOT = "__tests__/__results__"
     def UNIT_TEST_ROOT = "$TEST_ROOT/unit"
@@ -159,6 +152,20 @@ node('ca-jenkins-agent') {
 
     // Check for Vulnerabilities
     pipeline.checkVulnerabilities()
+
+    pipeline.createStage(
+        name: "Bundle Keytar binaries",
+        shouldExecute: {
+            return pipeline.protectedBranches.isProtected(BRANCH_NAME)
+        },
+        stage: {
+            def packageJson = readJSON file: "package.json"
+            def keytarVer = packageJson.dependencies['keytar']
+            withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
+                sh "bash jenkins/bundleKeytar.sh \"${USERNAME}:${TOKEN}\" ${keytarVer}"
+            }
+        }
+    )
 
     // Deploys the application if on a protected branch. Give the version input
     // 30 minutes before an auto timeout approve.
