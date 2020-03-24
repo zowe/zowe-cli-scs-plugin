@@ -71,8 +71,23 @@ node('ca-jenkins-agent') {
 
     // Build the application
     pipeline.build(timeout: [
-        time: 5,
-        unit: 'MINUTES'
+        time: 10,
+        unit: 'MINUTES',
+        archiveOperation: {
+            // Bundle Keytar binaries
+            def packageJson = readJSON file: "package.json"
+            def keytarVer = packageJson.dependencies['keytar']
+            withCredentials([usernamePassword(credentialsId: 'ZOWE_ROBOT_GITHUB', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
+                sh """
+    mkdir prebuilds && cd prebuilds &&
+    curl -s https://${USERNAME}:${TOKEN}@api.github.com/repos/atom/node-keytar/releases/tags/v${keytarVer} |
+        jq -c '.assets[] | select (.name | contains(\"node\"))' |
+        jq -r -c 'select (.browser_download_url) | .browser_download_url' |
+        while IFS=$\"\\n\" read -r c; do curl -sL -o `echo -n $(echo -n \$c | md5sum | cut -c1-6)'-'$(basename \$c)` \$c; done &&
+    cd ..
+    """
+            }
+        }
     ])
 
     def TEST_ROOT = "__tests__/__results__"
