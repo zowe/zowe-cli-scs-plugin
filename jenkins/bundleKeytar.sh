@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 mkdir prebuilds && cd prebuilds
 curl -s https://$1@api.github.com/repos/atom/node-keytar/releases/tags/v$2 |
     jq -c '.assets[] | select (.name | contains("node"))' |
