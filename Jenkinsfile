@@ -154,7 +154,7 @@ node('ca-jenkins-agent') {
     pipeline.checkVulnerabilities()
 
     pipeline.createStage(
-        name: "Bundle Keytar binaries",
+        name: "Bundle Keytar Binaries",
         shouldExecute: {
             return pipeline.protectedBranches.isProtected(BRANCH_NAME)
         },
