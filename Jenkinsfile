@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-@Library('shared-pipelines') import org.zowe.pipelines.nodejs.NodeJSPipeline
+@Library('shared-pipelines@add-label') import org.zowe.pipelines.nodejs.NodeJSPipeline
 
 import org.zowe.pipelines.nodejs.models.SemverLevel
 
