@@ -2,7 +2,7 @@
 
 All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be documented in this file.
 
-## `4.0.4`
+## Recent Changes
 
 - Update Keytar dependency to support offline installation for Node.js 13. Thanks @tjohnsonBCM
 
