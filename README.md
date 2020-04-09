@@ -56,6 +56,33 @@ Before you install and use the plug-in:
 
     For more information, see [Installing Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html).
 
+### Linux (graphical)
+
+-   Install the packages `gnome-keyring` and `libsecret`.
+
+### Linux (headless)
+
+-   Install the packages listed for graphical Linux above.
+
+-   Run the commands below to unlock the Gnome keyring. The keyring must be unlocked again after each reboot.
+
+    The second command will prompt for your password. Press Ctrl+D when you have finished typing it.
+    ```bash
+    export $(dbus-launch)
+    gnome-keyring-daemon --components=secrets --unlock
+    ```
+
+-   To automatically unlock the Gnome keyring at system boot, add the lines below to your `~/.bashrc` file.
+
+    Replace "root" with your system password.
+    ```bash
+    if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+      exec dbus-run-session -- bash
+    fi
+
+    echo 'root' | gnome-keyring-daemon --components=secrets --unlock
+    ```
+
 ## Installing
 
 Use one of the following methods to install the plug-in:
@@ -171,6 +198,6 @@ For information about contributing to the plug-in, see the Zowe CLI [Contributio
 
 To learn about building new commands or a new plug-in for Zowe CLI, see [Develop for Zowe CLI](https://docs.zowe.org/stable/extend/extend-cli/cli-devTutorials.html).
 
-### Imperative CLU Framework documentation
+### Imperative CLI Framework documentation
 
 [Imperative CLI Framework](https://github.com/zowe/imperative/wiki) documentation is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to the documentation as you develop your plug-in.
