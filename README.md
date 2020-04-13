@@ -72,14 +72,15 @@ Before you install and use the plug-in:
     gnome-keyring-daemon --components=secrets --unlock
     ```
 
--   To automatically unlock the Gnome keyring at system boot, add the lines below to your `~/.bashrc` file.
+-   If running in a Docker container, add the following lines to `~/.bashrc` to automatically unlock the Gnome keyring on login.
 
-    Replace "root" with your system password.
+    **Warning:** Use with caution, having your root password visible in plain text is not secure.
     ```bash
     if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
       exec dbus-run-session -- bash
     fi
 
+    # Replace "root" with your system password
     echo 'root' | gnome-keyring-daemon --components=secrets --unlock
     ```
 
