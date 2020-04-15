@@ -64,25 +64,41 @@ Before you install and use the plug-in:
 
 -   Install the packages listed for graphical Linux above.
 
--   Run the commands below to unlock the Gnome keyring. The keyring must be unlocked again after each reboot.
+-   Run the commands below to unlock the Gnome keyring. The keyring must be unlocked again for each new user session.
 
     The second command will prompt for your password. Press Ctrl+D when you have finished typing it.
     ```bash
     export $(dbus-launch)
-    gnome-keyring-daemon --components=secrets --unlock
+    gnome-keyring-daemon --unlock --components=secrets
     ```
 
--   If running in a Docker container, add the following lines to `~/.bashrc` to automatically unlock the Gnome keyring on login.
+-   To automatically unlock the Gnome keyring at log on:
 
-    **Warning:** Use with caution, having your root password visible in plain text is not secure.
-    ```bash
-    if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
-      exec dbus-run-session -- bash
-    fi
+    1. Install the PAM module for Gnome keyring. The package name depends on your distro:
 
-    # Replace "root" with your system password
-    echo 'root' | gnome-keyring-daemon --components=secrets --unlock
-    ```
+        - `gnome-keyring-pam` - CentOS, Fedora, SUSE
+        - `libpam-gnome-keyring` - Debian, Ubuntu
+
+    1. Make the following edits to the files `/etc/pam.d/login` (for TTY login), and `/etc/pam.d/sshd` if it exists (for SSH login).
+
+        - Add this line at the end of the `auth` section:
+            ```
+            auth optional pam_gnome_keyring.so
+            ```
+        - Add this line at the end of the `session` section:
+            ```
+            session optional pam_gnome_keyring.so auto_start
+            ```
+
+    1. Add the following lines to `~/.bashrc`. This will launch DBus which is required by Gnome keyring, and start the keyring daemon so it is ready to be used by Zowe CLI commands.
+
+        ```bash
+        if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+          exec dbus-run-session -- $SHELL
+        fi
+
+        gnome-keyring-daemon --start --components=secrets
+        ```
 
 ## Installing
 
