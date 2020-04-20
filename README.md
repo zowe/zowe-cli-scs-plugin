@@ -76,7 +76,7 @@ Before you install and use the plug-in:
 
     **Note:** The following steps have been tested on CentOS, SUSE, and Ubuntu. Results may vary on other Linux distributions.
 
-    1. Install the PAM module for Gnome keyring. The package name depends on your distro:
+    1. Install the PAM module for Gnome keyring. The package name depends on your distribution:
 
         - `gnome-keyring-pam` - CentOS, Fedora, SUSE
         - `libpam-gnome-keyring` - Debian, Ubuntu
