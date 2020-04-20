@@ -56,6 +56,52 @@ Before you install and use the plug-in:
 
     For more information, see [Installing Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html).
 
+### Linux (graphical)
+
+-   Install the packages `gnome-keyring` and `libsecret` (or `libsecret-1-0` on Debian and Ubuntu).
+
+### Linux (headless)
+
+-   Install the packages listed for graphical Linux above.
+
+-   Run the commands below to unlock the Gnome keyring. The keyring must be unlocked again for each new user session.
+
+    The second command will prompt for your password. Press Ctrl+D when you have finished typing it.
+    ```bash
+    export $(dbus-launch)
+    gnome-keyring-daemon --unlock --components=secrets
+    ```
+
+-   To automatically unlock the Gnome keyring at log on:
+
+    **Note:** The following steps have been tested on CentOS, SUSE, and Ubuntu. Results may vary on other Linux distributions.
+
+    1. Install the PAM module for Gnome keyring. The package name depends on your distribution:
+
+        - `gnome-keyring-pam` - CentOS, Fedora, SUSE
+        - `libpam-gnome-keyring` - Debian, Ubuntu
+
+    1. Make the following edits to the files `/etc/pam.d/login` (for TTY login), and `/etc/pam.d/sshd` if it exists (for SSH login).
+
+        - Add this line at the end of the `auth` section:
+            ```
+            auth optional pam_gnome_keyring.so
+            ```
+        - Add this line at the end of the `session` section:
+            ```
+            session optional pam_gnome_keyring.so auto_start
+            ```
+
+    1. Add the following lines to `~/.bashrc`. This will launch DBus which is required by Gnome keyring, and start the keyring daemon so it is ready to be used by Zowe CLI commands.
+
+        ```bash
+        if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+          exec dbus-run-session -- $SHELL
+        fi
+
+        gnome-keyring-daemon --start --components=secrets
+        ```
+
 ## Installing
 
 Use one of the following methods to install the plug-in:
@@ -171,6 +217,6 @@ For information about contributing to the plug-in, see the Zowe CLI [Contributio
 
 To learn about building new commands or a new plug-in for Zowe CLI, see [Develop for Zowe CLI](https://docs.zowe.org/stable/extend/extend-cli/cli-devTutorials.html).
 
-### Imperative CLU Framework documentation
+### Imperative CLI Framework documentation
 
 [Imperative CLI Framework](https://github.com/zowe/imperative/wiki) documentation is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to the documentation as you develop your plug-in.
