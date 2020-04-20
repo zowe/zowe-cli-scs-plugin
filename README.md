@@ -58,7 +58,7 @@ Before you install and use the plug-in:
 
 ### Linux (graphical)
 
--   Install the packages `gnome-keyring` and `libsecret`.
+-   Install the packages `gnome-keyring` and `libsecret` (or `libsecret-1-0` on Debian and Ubuntu).
 
 ### Linux (headless)
 
@@ -73,6 +73,8 @@ Before you install and use the plug-in:
     ```
 
 -   To automatically unlock the Gnome keyring at log on:
+
+    **Note:** The following steps have been tested on CentOS, SUSE, and Ubuntu. Results may vary on other Linux distributions.
 
     1. Install the PAM module for Gnome keyring. The package name depends on your distro:
 
