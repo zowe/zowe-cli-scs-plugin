@@ -14,10 +14,10 @@ import { runCliScript } from "../../../__src__/TestUtils";
 
 let TEST_ENV: ITestEnvironment;
 
-describe("secure-credential-store update command", () => {
+describe("secure-credential-store revert command", () => {
   beforeAll(async () => {
     // Create test environment without installing the plugin
-    TEST_ENV = await TestEnvironment.setUp({testName: "update_command"});
+    TEST_ENV = await TestEnvironment.setUp({testName: "revert_command"});
 
     // Install the plugin
     await TestEnvironment.installPlugin(TEST_ENV);
@@ -28,13 +28,13 @@ describe("secure-credential-store update command", () => {
   });
 
   it("should display the help", async () => {
-    const response = await runCliScript(__dirname + "/__scripts__/update_help.sh", TEST_ENV);
+    const response = await runCliScript(__dirname + "/__scripts__/revert_help.sh", TEST_ENV);
     expect(response.stderr.toString()).toBe("");
     expect(response.stdout.toString()).toMatchSnapshot();
     expect(response.status).toBe(0);
   });
 
-  it("should fail with invalid command", async () => {
+  it("should fail without for-sure option", async () => {
     const response = await runCliScript(__dirname + "/__scripts__/invalid_command.sh", TEST_ENV);
     expect(response.stdout.toString()).toBe("");
     expect(response.stderr.toString()).toMatchSnapshot();

@@ -8,12 +8,14 @@
  * Copyright Contributors to the Zowe Project.
  */
 
-import { ICommandHandler, IHandlerParameters } from "@zowe/imperative";
-import BaseScsHandler from "../scs.shared.handler";
+import RevertAllHandler from "../../../src/cli/revert/RevertAll.handler";
 
+describe("RevertAll Behavior", () => {
+  it("should load", async () => {
+    const handler = new RevertAllHandler();
 
-export default class UpdateAllHandler implements ICommandHandler {
-  public async process(params: IHandlerParameters): Promise<void> {
-    await BaseScsHandler.updateProfiles(params, true);
-  }
-}
+    // await handler.process({});
+
+    expect(true).toBe(true);
+  });
+});

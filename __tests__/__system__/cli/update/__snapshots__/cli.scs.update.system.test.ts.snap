@@ -46,6 +46,19 @@ exports[`secure-credential-store update command should display the help 1`] = `
 }"
 `;
 
+exports[`secure-credential-store update command should fail if secure credential manager not enabled 1`] = `
+"Error:
+Invalid credential manager setting
+
+Possible Causes:
+  Expected secure credential manager to be enabled
+
+Resolutions:
+  Run \\"zowe config set CredentialManager @zowe/secure-credential-store-for-zowe-cli\\"
+
+"
+`;
+
 exports[`secure-credential-store update command should fail with invalid command 1`] = `
 "Command Error:
 Unknown argument: updateall

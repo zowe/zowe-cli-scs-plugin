@@ -10,6 +10,7 @@
 
 import { IImperativeConfig } from "@zowe/imperative";
 import { Constants } from "./Constants";
+import { RevertAllDefinition } from "../cli/revert/RevertAll.definition";
 import { UpdateAllDefinition } from "../cli/update/UpdateAll.definition";
 
 const config: IImperativeConfig = {
@@ -20,6 +21,7 @@ const config: IImperativeConfig = {
   productDisplayName: Constants.DISPLAY_NAME,
   name: Constants.NAME,
   definitions: [
+    RevertAllDefinition,
     UpdateAllDefinition
   ],
   overrides: {
