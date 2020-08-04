@@ -158,7 +158,7 @@ export class TestEnvironment {
     // Parse the yaml file
     try {
       logger.info("Reading yaml configuration file: " + propFile + "...");
-      properties = yaml.safeLoad(fs.readFileSync(propFile, "utf8"));
+      properties = yaml.safeLoad(fs.readFileSync(propFile, "utf8")) as ITestPropertiesSchema;
       logger.info("Properties file read.");
       // injectCliProps(properties);
       // console.log(properties);
