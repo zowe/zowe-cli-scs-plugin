@@ -5,6 +5,27 @@ Object {
   "definitions": Array [
     Object {
       "aliases": Array [
+        "r",
+      ],
+      "description": "Reverts all secure profiles to be stored in plain text",
+      "handler": "user/specific/path",
+      "name": "revert",
+      "options": Array [
+        Object {
+          "aliases": Array [
+            "f",
+          ],
+          "description": "Specify this option to confirm that you want to revert all credentials to be stored insecurely.",
+          "name": "for-sure",
+          "required": true,
+          "type": "boolean",
+        },
+      ],
+      "summary": "Reverts all secure profiles to be stored in plain text",
+      "type": "command",
+    },
+    Object {
+      "aliases": Array [
         "u",
       ],
       "description": "Updates all plain text profiles to be securely stored",

@@ -2,6 +2,11 @@
 
 All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- Add `scs revert` command to revert secure profiles to be stored in plain text
+- Fail to run update and revert commands if secure credential manager not enabled
+
 ## `4.0.4`
 
 - Update Keytar dependency to support offline installation for Node.js 13. Thanks @tjohnsonBCM

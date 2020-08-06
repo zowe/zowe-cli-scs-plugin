@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`secure-credential-store revert command definition should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "r",
+  ],
+  "description": "Reverts all secure profiles to be stored in plain text",
+  "name": "revert",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "f",
+      ],
+      "description": "Specify this option to confirm that you want to revert all credentials to be stored insecurely.",
+      "name": "for-sure",
+      "required": true,
+      "type": "boolean",
+    },
+  ],
+  "summary": "Reverts all secure profiles to be stored in plain text",
+  "type": "command",
+}
+`;

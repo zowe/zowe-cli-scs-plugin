@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`secure-credential-store revert command should display the help 1`] = `
+"
+ COMMAND NAME
+ ------------
+
+   revert | r
+
+ DESCRIPTION
+ -----------
+
+   Reverts all secure profiles to be stored in plain text
+
+ USAGE
+ -----
+
+   zowe secure-credential-store revert [options]
+
+ REQUIRED OPTIONS
+ ----------------
+
+   --for-sure  | -f (boolean)
+
+      Specify this option to confirm that you want to revert all credentials to be
+      stored insecurely.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce JSON formatted data from a command
+
+   --help  | -h (boolean)
+
+      Display help text
+
+   --help-examples  (boolean)
+
+      Display examples for all the commands in a the group
+
+   --help-web  | --hw (boolean)
+
+      Display HTML help in browser
+
+{
+  \\"success\\": true,
+  \\"exitCode\\": 0,
+  \\"message\\": \\"The help was constructed for command: revert.\\",
+  \\"stdout\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   revert | r\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Reverts all secure profiles to be stored in plain text\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe secure-credential-store revert [options]\\\\n\\\\n REQUIRED OPTIONS\\\\n ----------------\\\\n\\\\n   --for-sure  | -f (boolean)\\\\n\\\\n      Specify this option to confirm that you want to revert all credentials to be\\\\n      stored insecurely.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a the group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n\\",
+  \\"stderr\\": \\"\\",
+  \\"data\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   revert | r\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Reverts all secure profiles to be stored in plain text\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe secure-credential-store revert [options]\\\\n\\\\n REQUIRED OPTIONS\\\\n ----------------\\\\n\\\\n   --for-sure  | -f (boolean)\\\\n\\\\n      Specify this option to confirm that you want to revert all credentials to be\\\\n      stored insecurely.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a the group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n\\"
+}"
+`;
+
+exports[`secure-credential-store revert command should fail if secure credential manager not enabled 1`] = `
+"Error:
+Invalid credential manager setting
+
+Possible Causes:
+  Expected secure credential manager to be enabled
+
+Resolutions:
+  Run \\"zowe config set CredentialManager @zowe/secure-credential-store-for-zowe-cli\\"
+
+"
+`;
+
+exports[`secure-credential-store revert command should fail without for-sure option 1`] = `
+"
+Syntax Error:
+Missing Required Option:
+--for-sure (-f)
+
+Option Description:
+Specify this option to confirm that you want to revert all credentials to be
+stored insecurely.
+
+Use \\"zowe secure-credential-store revert --help\\" to view command description, usage, and options.
+"
+`;
