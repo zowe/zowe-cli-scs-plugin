@@ -5,7 +5,7 @@ All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be 
 ## `4.1.0`
 
 - Enhancement: Added the `scs revert` command. Use the command to revert securely-stored credentials in your user profiles to be stored in plain text. [#22](https://github.com/zowe/zowe-cli-scs-plugin/issues/22)
-- Enhancement: Changed the `scs update` and `scs revert` commands so that they fail if Secure Credential Manager is not enabled. [#22](https://github.com/zowe/zowe-cli-scs-plugin/issues/22)
+- Enhancement: Changed the `scs update` and `scs revert` commands so that they fail if Secure Credential Manager is not enabled. [#22](https://github.com/zowe/zowe-cli-scs-plugin/pull/23)
 
 ## `4.0.4`
 
