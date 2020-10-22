@@ -162,7 +162,7 @@ node('ca-jenkins-agent') {
             def packageJson = readJSON file: "package.json"
             def keytarVer = packageJson.dependencies['keytar']
             withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
-                sh "bash jenkins/bundleKeytar.sh \"${USERNAME}:${TOKEN}\" ${keytarVer}"
+                sh "bash jenkins/bundleKeytar.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
             }
         }
     )
