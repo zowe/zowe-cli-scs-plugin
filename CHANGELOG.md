@@ -4,7 +4,7 @@ All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be 
 
 ## `4.1.1`
 
-- Enhancement: Updated the Keytar dependency to v6 to support Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
+- BugFix: Updated the Keytar dependency to v6 to support Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
 
 ## `4.1.0`
 
