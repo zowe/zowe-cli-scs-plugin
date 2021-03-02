@@ -18,9 +18,10 @@ try {
     packageJson.bundledDependencies = Object.keys(packageJson.dependencies);
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-    // Patch keytar package.json to remove custom install script
+    // Patch keytar package.json to add build folder and remove custom install script
     packageJsonPath = join(__dirname, "..", "node_modules", "keytar", "package.json");
     packageJson = require(packageJsonPath);
+    packageJson.files.push("build");
     delete packageJson.scripts.install;
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 } catch (err) {
