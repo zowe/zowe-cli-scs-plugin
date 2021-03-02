@@ -21,7 +21,6 @@ try {
     // Patch keytar package.json to add build folder and remove custom install script
     packageJsonPath = join(__dirname, "..", "node_modules", "keytar", "package.json");
     packageJson = require(packageJsonPath);
-    packageJson.files.push("build");
     delete packageJson.scripts.install;
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 } catch (err) {

@@ -21,7 +21,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install Dependencies
-      run: npm install --ignore-scripts
+      run: npm install --ignore-scripts && npm rebuild keytar
 
     - name: Build Source
       run: npm run build
