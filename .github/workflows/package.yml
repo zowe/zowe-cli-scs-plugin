@@ -30,6 +30,6 @@ jobs:
       run: npm pack
 
     - name: Archive Artifacts
-      uses: actions/upload-artifact@v2
+      uses: kittaakos/upload-artifact-as-is@v0
       with:
         path: '*.tgz'
