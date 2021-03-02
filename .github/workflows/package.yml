@@ -27,10 +27,11 @@ jobs:
       run: npm run build
 
     - name: Package TGZ
+      id: pack
       run: npm pack
 
     - name: Archive Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ env.ARTIFACT_FILE }}
-        path: ${{ env.ARTIFACT_FILE }}
+        name: ${{ steps.pack.outputs.artifact }}
+        path: ${{ steps.pack.outputs.artifact }}

@@ -23,7 +23,7 @@ try {
     const arch = process.arch;
     const newFile = `${pkgName}-v${pkgVersion}-node-${nodeVersion}-${platform}-${arch}.tgz`;
     fs.renameSync(oldFile, newFile);
-    console.log(`::set-env name=ARTIFACT_FILE::${newFile}`);
+    console.log(`::set-output name=artifact::${newFile}`);
 } catch (err) {
     console.error(err);
 }
