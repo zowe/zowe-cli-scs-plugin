@@ -4,7 +4,7 @@ All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be 
 
 ## Recent Changes
 
-- BugFix: Updated the Keytar dependency to v6 to support Node.js v15.
+- BugFix: Updated the Keytar dependency to v7 to support Node.js v15.
 
 ## `4.1.2`
 
