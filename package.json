@@ -44,7 +44,7 @@
     "postuninstall": "echo \"CLI Profiles that you have created will need to be recreated because their credentials are stored in the credential manager that has been uninstalled. Refer to the available options in the help text to create a new profile 'zowe profiles create zosmf-profile -h'.\" 1>&2"
   },
   "dependencies": {
-    "keytar": "7.1.0"
+    "keytar": "7.6.0"
   },
   "peerDependencies": {
     "@zowe/cli": "^6.0.0",
