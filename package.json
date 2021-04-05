@@ -15,7 +15,6 @@
   },
   "files": [
     "lib",
-    "prebuilds",
     "scripts/preinstall.js"
   ],
   "main": "lib/index.js",

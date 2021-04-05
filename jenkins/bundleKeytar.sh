@@ -18,4 +18,4 @@ curl -fs https://$githubAuthHeader@api.github.com/repos/atom/node-keytar/release
     while read -r bdu; do curl -fsLOJ $bdu; done
 
 rm ./jq
-cd -
+cd ../../..
