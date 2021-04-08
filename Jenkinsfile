@@ -153,24 +153,22 @@ node('ca-jenkins-agent') {
     // Check for Vulnerabilities
     pipeline.checkVulnerabilities()
 
-    pipeline.createStage(
-        name: "Bundle Keytar Binaries",
-        shouldExecute: {
-            return pipeline.protectedBranches.isProtected(BRANCH_NAME)
-        },
-        stage: {
-            def packageJson = readJSON file: "package.json"
-            def keytarVer = packageJson.dependencies['keytar']
-            withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
-                sh "bash jenkins/bundleKeytar.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
-            }
-        }
-    )
-
     // Check that the changelog has been updated
     pipeline.checkChangelog(
         file: "CHANGELOG.md",
         header: "## Recent Changes"
+    )
+
+    pipeline.createStage(
+        name: "Download Keytar Binaries",
+        stage: {
+            def packageJson = readJSON file: "package.json"
+            def keytarVer = packageJson.dependencies['keytar']
+            withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
+                sh "bash jenkins/downloadPrebuilds.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
+            }
+            archiveArtifacts artifacts: "keytar-prebuilds.tgz"
+        }
     )
 
     // Perform the versioning email mechanism

@@ -5,7 +5,7 @@ set -ex
 keytarVersion=$1
 githubAuthHeader=$2
 
-cd "$(git rev-parse --show-toplevel)/node_modules/keytar"
+cd "$(git rev-parse --show-toplevel)"
 rm -rf prebuilds
 mkdir prebuilds && cd prebuilds
 
@@ -18,4 +18,6 @@ curl -fs https://$githubAuthHeader@api.github.com/repos/atom/node-keytar/release
     while read -r bdu; do curl -fsLOJ $bdu; done
 
 rm ./jq
-cd ../../..
+cd ..
+
+tar -czvf keytar-prebuilds.tgz ./prebuilds
