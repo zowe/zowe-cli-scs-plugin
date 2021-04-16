@@ -160,7 +160,10 @@ node('ca-jenkins-agent') {
     )
 
     pipeline.createStage(
-        name: "Download Keytar Binaries",
+        name: "Bundle Keytar Binaries",
+        shouldExecute: {
+            return pipeline.protectedBranches.isProtected(BRANCH_NAME)
+        },
         stage: {
             def packageJson = readJSON file: "package.json"
             def keytarVer = packageJson.dependencies['keytar']
