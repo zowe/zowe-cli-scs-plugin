@@ -2,7 +2,7 @@
 
 All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `4.1.4`
 
 - BugFix: Updated the Keytar and prebuild-install dependencies to make offline install possible for npm@7 users.
 
