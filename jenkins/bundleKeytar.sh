@@ -15,7 +15,8 @@ chmod +x ./jq
 curl -fs https://$githubAuthHeader@api.github.com/repos/atom/node-keytar/releases/tags/v$keytarVersion |
     ./jq -c '.assets[] | select (.name | contains("node"))' |
     ./jq -cr 'select (.browser_download_url) | .browser_download_url' |
-    while read -r bdu; do curl -fsL -o `echo -n $(echo -n $bdu | md5sum | cut -c1-6)'-'$(basename $bdu)` $bdu; done
+    while read -r bdu; do curl -fsLOJ $bdu; done
 
 rm ./jq
+tar -czvf ../keytar-prebuilds.tgz *
 cd ..

@@ -56,7 +56,7 @@ Before you install and use the plug-in:
 
     For more information, see [Installing Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html).
 
-    **Note:** If you're using npm@7, an Internet connection is required during installation of the Secure Credential Store plug-in. Additionally, there is a prerequisite on Windows for npm@7 users: `npm install -g prebuild-install`
+    **Note:** If you're using npm@7 on Windows, there is [an NPM bug]((https://github.com/npm/cli/issues/2659)) that requires you to install a prerequisite first: `npm install -g prebuild-install`
 
 ### Linux (graphical)
 

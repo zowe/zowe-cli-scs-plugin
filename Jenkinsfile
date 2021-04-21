@@ -153,6 +153,12 @@ node('ca-jenkins-agent') {
     // Check for Vulnerabilities
     pipeline.checkVulnerabilities()
 
+    // Check that the changelog has been updated
+    pipeline.checkChangelog(
+        file: "CHANGELOG.md",
+        header: "## Recent Changes"
+    )
+
     pipeline.createStage(
         name: "Bundle Keytar Binaries",
         shouldExecute: {
@@ -164,13 +170,8 @@ node('ca-jenkins-agent') {
             withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
                 sh "bash jenkins/bundleKeytar.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
             }
+            archiveArtifacts artifacts: "keytar-prebuilds.tgz"
         }
-    )
-
-    // Check that the changelog has been updated
-    pipeline.checkChangelog(
-        file: "CHANGELOG.md",
-        header: "## Recent Changes"
     )
 
     // Perform the versioning email mechanism
