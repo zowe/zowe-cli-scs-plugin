@@ -20,6 +20,10 @@ import org.zowe.pipelines.nodejs.models.SemverLevel
 def PRODUCT_NAME = "Zowe CLI"
 
 node('zowe-jenkins-agent-dind') {
+    // This plugin's tests requires the CLI be installed, so install the CLI
+    sh "npm config set @zowe:registry https://zowe.jfrog.io/zowe/api/npm/npm-local-release"
+    sh "npm install --global @zowe/cli"
+
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)
 
@@ -128,7 +132,6 @@ node('zowe-jenkins-agent-dind') {
             JEST_STARE_RESULT_HTML: "index.html"
         ],
         operation: {
-            sh "npm install --global @zowe/cli"
             writeFile file: TEST_PROPERTIES_FILE, text: SYSTEM_TEST_PROPERTIES
             sh "npm run test:system"
         },
