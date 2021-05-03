@@ -19,7 +19,7 @@ import org.zowe.pipelines.nodejs.models.SemverLevel
  */
 def PRODUCT_NAME = "Zowe CLI"
 
-node('ca-jenkins-agent') {
+node('zowe-jenkins-agent-dind') {
     // This plugin's tests requires the CLI be installed, so install the CLI
     sh "npm config set @zowe:registry https://zowe.jfrog.io/zowe/api/npm/npm-local-release"
     sh "npm install --global @zowe/cli"
@@ -55,7 +55,7 @@ node('ca-jenkins-agent') {
     ]
 
     // Initialize the pipeline library, should create 5 steps
-    pipeline.setup()
+    pipeline.setup(nodeJsVersion: 'v12.22.1')
 
     // Create a custom lint stage that runs immediately after the setup.
     pipeline.createStage(
