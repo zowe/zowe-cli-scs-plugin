@@ -170,7 +170,11 @@ node('zowe-jenkins-agent-dind') {
             withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
                 sh "bash jenkins/bundleKeytar.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
             }
-            archiveArtifacts artifacts: "keytar-prebuilds.tgz"
+
+            def uploadUrlArtifactory = "https://zowe.jfrog.io/artifactory/libs-snapshot-local/org/zowe/cli/zowe-cli-prebuilds/keytar-${keytarVer}-prebuilds.tgz"
+            withCredentials([usernamePassword(credentialsId: 'zowe.jfrog.io', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                sh "curl -f -u ${USERNAME}:${PASSWORD} --data-binary \"@keytar-prebuilds.tgz\" -H \"Content-Type: application/x-gzip\" -X PUT ${uploadUrlArtifactory}"
+            }
         }
     )
 
