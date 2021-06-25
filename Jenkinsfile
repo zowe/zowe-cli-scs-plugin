@@ -11,7 +11,6 @@
 
 @Library('shared-pipelines') import org.zowe.pipelines.nodejs.NodeJSPipeline
 
-import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
 import org.zowe.pipelines.nodejs.models.SemverLevel
 
 /**
@@ -180,7 +179,7 @@ node('zowe-jenkins-agent-dind') {
                     sh "curl -f -u ${USERNAME}:${PASSWORD} --data-binary \"@keytar-prebuilds.tgz\" -H \"Content-Type: application/x-gzip\" -X PUT ${uploadUrlArtifactory}"
                 }
             } else {
-                Utils.markStageSkippedForConditional(STAGE_NAME)
+                echo "Skipping upload to Artifactory because \"keytar-${keytarVer}-prebuilds.tgz\" already exists"
             }
         }
     )
