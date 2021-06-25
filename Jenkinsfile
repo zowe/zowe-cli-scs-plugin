@@ -11,6 +11,7 @@
 
 @Library('shared-pipelines') import org.zowe.pipelines.nodejs.NodeJSPipeline
 
+import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
 import org.zowe.pipelines.nodejs.models.SemverLevel
 
 /**
@@ -167,13 +168,19 @@ node('zowe-jenkins-agent-dind') {
         stage: {
             def packageJson = readJSON file: "package.json"
             def keytarVer = packageJson.dependencies['keytar']
-            withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
-                sh "bash jenkins/bundleKeytar.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
-            }
-
             def uploadUrlArtifactory = "https://zowe.jfrog.io/artifactory/libs-snapshot-local/org/zowe/cli/zowe-cli-prebuilds/keytar-${keytarVer}-prebuilds.tgz"
-            withCredentials([usernamePassword(credentialsId: 'zowe.jfrog.io', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                sh "curl -f -u ${USERNAME}:${PASSWORD} --data-binary \"@keytar-prebuilds.tgz\" -H \"Content-Type: application/x-gzip\" -X PUT ${uploadUrlArtifactory}"
+
+            // If Keytar prebuilds TGZ doesn't exist yet on Artifactory, create and upload it
+            if (sh(returnStatus: true, script: "curl -fs --head ${uploadUrlArtifactory}") != 0) {
+                withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
+                    sh "bash jenkins/bundleKeytar.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
+                }
+
+                withCredentials([usernamePassword(credentialsId: 'zowe.jfrog.io', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "curl -f -u ${USERNAME}:${PASSWORD} --data-binary \"@keytar-prebuilds.tgz\" -H \"Content-Type: application/x-gzip\" -X PUT ${uploadUrlArtifactory}"
+                }
+            } else {
+                Utils.markStageSkippedForConditional(STAGE_NAME)
             }
         }
     )
