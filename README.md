@@ -103,6 +103,16 @@ Before you install and use the plug-in:
 
         gnome-keyring-daemon --start --components=secrets
         ```
+    
+### zLinux
+
+- Follow all installation steps above for Linux
+
+- Install the following packages:
+  - Python 3 (> 3.6.0)
+  - make
+  - gcc-c++
+  - libsecret-devel
 
 ## Installing
 
