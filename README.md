@@ -110,9 +110,9 @@ Before you install and use the plug-in:
 
 - Install the following packages:
   - Python 3 (> 3.6.0)
-  - make
-  - gcc-c++
-  - libsecret-devel
+  - `make`
+  - `gcc-c++`
+  - `libsecret-devel`
 
 ## Installing
 
