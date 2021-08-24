@@ -56,47 +56,47 @@ const secureProfileData = {
 };
 
 describe("Base SCS handler", () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it("should update plain text profile to be secure", async () => {
-    const saveProfileSpy = jest.spyOn(CliProfileManager.prototype, "save");
-    saveProfileSpy.mockResolvedValueOnce({
-        message: "success",
-        overwritten: true,
-        path: "fakePath"
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
-    await (BaseScsHandler as any).makeProfileSecure(insecureProfileData);
-    expect(saveProfileSpy).toHaveBeenCalled();
-  });
+    it("should update plain text profile to be secure", async () => {
+        const saveProfileSpy = jest.spyOn(CliProfileManager.prototype, "save");
+        saveProfileSpy.mockResolvedValueOnce({
+            message: "success",
+            overwritten: true,
+            path: "fakePath"
+        });
 
-  it("should not update profile that is already secure", async () => {
-    const saveProfileSpy = jest.spyOn(CliProfileManager.prototype, "save");
-
-    await (BaseScsHandler as any).makeProfileSecure(secureProfileData);
-    expect(saveProfileSpy).not.toHaveBeenCalled();
-  });
-
-  it("should revert secure profile to be plain text", async () => {
-    jest.spyOn(CliProfileManager.prototype, "load")
-        .mockResolvedValueOnce({} as any);
-    Object.defineProperty(CredentialManagerFactory, "manager", {
-        get: jest.fn(() => ({
-            delete: jest.fn()
-        }))
+        await (BaseScsHandler as any).makeProfileSecure(insecureProfileData);
+        expect(saveProfileSpy).toHaveBeenCalled();
     });
-    const writeProfileSpy = jest.spyOn(ProfileIO, "writeProfile");
 
-    await (BaseScsHandler as any).makeProfileInsecure(secureProfileData);
-    expect(writeProfileSpy).toHaveBeenCalled();
-  });
+    it("should not update profile that is already secure", async () => {
+        const saveProfileSpy = jest.spyOn(CliProfileManager.prototype, "save");
 
-  it("should not revert profile that is already plain text", async () => {
-    const writeProfileSpy = jest.spyOn(ProfileIO, "writeProfile");
+        await (BaseScsHandler as any).makeProfileSecure(secureProfileData);
+        expect(saveProfileSpy).not.toHaveBeenCalled();
+    });
 
-    await (BaseScsHandler as any).makeProfileInsecure(insecureProfileData);
-    expect(writeProfileSpy).not.toHaveBeenCalled();
-  });
+    it("should revert secure profile to be plain text", async () => {
+        jest.spyOn(CliProfileManager.prototype, "load")
+            .mockResolvedValueOnce({} as any);
+        Object.defineProperty(CredentialManagerFactory, "manager", {
+            get: jest.fn(() => ({
+                delete: jest.fn()
+            }))
+        });
+        const writeProfileSpy = jest.spyOn(ProfileIO, "writeProfile");
+
+        await (BaseScsHandler as any).makeProfileInsecure(secureProfileData);
+        expect(writeProfileSpy).toHaveBeenCalled();
+    });
+
+    it("should not revert profile that is already plain text", async () => {
+        const writeProfileSpy = jest.spyOn(ProfileIO, "writeProfile");
+
+        await (BaseScsHandler as any).makeProfileInsecure(insecureProfileData);
+        expect(writeProfileSpy).not.toHaveBeenCalled();
+    });
 });

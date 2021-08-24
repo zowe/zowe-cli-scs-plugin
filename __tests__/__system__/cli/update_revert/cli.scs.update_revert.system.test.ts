@@ -19,41 +19,41 @@ let PROFILE_PATH: string;
 const PROFILE_NAME = "cmtest";
 
 describe("secure-credential-store update and revert commands", () => {
-  beforeAll(async () => {
+    beforeAll(async () => {
     // Create test environment without installing the plugin
-    TEST_ENV = await TestEnvironment.setUp({testName: "update_revert_commands"});
-    PROFILE_PATH = path.join(TEST_ENV.env.ZOWE_CLI_HOME, "profiles", "zosmf", `${PROFILE_NAME}.yaml`);
+        TEST_ENV = await TestEnvironment.setUp({testName: "update_revert_commands"});
+        PROFILE_PATH = path.join(TEST_ENV.env.ZOWE_CLI_HOME, "profiles", "zosmf", `${PROFILE_NAME}.yaml`);
 
-    // create profile
-    const response = await runCliScript(__dirname + "/__scripts__/cm_create.sh", TEST_ENV, [PROFILE_NAME]);
-    expect(response.stdout.toString()).toContain("Profile created successfully");
-    expect(response.stdout.toString()).toContain("PLAINTEXT");
+        // create profile
+        const response = await runCliScript(__dirname + "/__scripts__/cm_create.sh", TEST_ENV, [PROFILE_NAME]);
+        expect(response.stdout.toString()).toContain("Profile created successfully");
+        expect(response.stdout.toString()).toContain("PLAINTEXT");
 
-    // Install the plugin
-    await TestEnvironment.installPlugin(TEST_ENV);
-  });
+        // Install the plugin
+        await TestEnvironment.installPlugin(TEST_ENV);
+    });
 
-  afterAll(async () => {
-    await TestEnvironment.cleanUp(TEST_ENV);
-  });
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(TEST_ENV);
+    });
 
-  it("should update plain text profiles successfully", async () => {
-    const response = await runCliScript(__dirname + "/__scripts__/update_success.sh", TEST_ENV);
-    expect(response.stderr.toString()).toBe("");
-    expect(response.stdout.toString()).toContain(`Profile ("${PROFILE_NAME}" of type "zosmf") successfully written`);
-    expect(response.status).toBe(0);
+    it("should update plain text profiles successfully", async () => {
+        const response = await runCliScript(__dirname + "/__scripts__/update_success.sh", TEST_ENV);
+        expect(response.stderr.toString()).toBe("");
+        expect(response.stdout.toString()).toContain(`Profile ("${PROFILE_NAME}" of type "zosmf") successfully written`);
+        expect(response.status).toBe(0);
 
-    const profileContents = fs.readFileSync(PROFILE_PATH, "utf8");
-    expect(profileContents).toContain("managed by");
-  });
+        const profileContents = fs.readFileSync(PROFILE_PATH, "utf8");
+        expect(profileContents).toContain("managed by");
+    });
 
-  it("should revert secure profiles successfully", async () => {
-    const response = await runCliScript(__dirname + "/__scripts__/revert_success.sh", TEST_ENV);
-    expect(response.stderr.toString()).toBe("");
-    expect(response.stdout.toString()).toContain(`Profile ("${PROFILE_NAME}" of type "zosmf") successfully written`);
-    expect(response.status).toBe(0);
+    it("should revert secure profiles successfully", async () => {
+        const response = await runCliScript(__dirname + "/__scripts__/revert_success.sh", TEST_ENV);
+        expect(response.stderr.toString()).toBe("");
+        expect(response.stdout.toString()).toContain(`Profile ("${PROFILE_NAME}" of type "zosmf") successfully written`);
+        expect(response.status).toBe(0);
 
-    const profileContents = fs.readFileSync(PROFILE_PATH, "utf8");
-    expect(profileContents).not.toContain("managed by");
-  });
+        const profileContents = fs.readFileSync(PROFILE_PATH, "utf8");
+        expect(profileContents).not.toContain("managed by");
+    });
 });

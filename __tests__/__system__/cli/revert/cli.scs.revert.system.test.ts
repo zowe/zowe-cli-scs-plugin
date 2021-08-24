@@ -15,36 +15,36 @@ import { runCliScript } from "../../../__src__/TestUtils";
 let TEST_ENV: ITestEnvironment;
 
 describe("secure-credential-store revert command", () => {
-  beforeAll(async () => {
+    beforeAll(async () => {
     // Create test environment without installing the plugin
-    TEST_ENV = await TestEnvironment.setUp({testName: "revert_command"});
+        TEST_ENV = await TestEnvironment.setUp({testName: "revert_command"});
 
-    // Install the plugin
-    await TestEnvironment.installPlugin(TEST_ENV);
-  });
+        // Install the plugin
+        await TestEnvironment.installPlugin(TEST_ENV);
+    });
 
-  afterAll(async () => {
-    await TestEnvironment.cleanUp(TEST_ENV);
-  });
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(TEST_ENV);
+    });
 
-  it("should display the help", async () => {
-    const response = await runCliScript(__dirname + "/__scripts__/revert_help.sh", TEST_ENV);
-    expect(response.stderr.toString()).toBe("");
-    expect(response.stdout.toString()).toMatchSnapshot();
-    expect(response.status).toBe(0);
-  });
+    it("should display the help", async () => {
+        const response = await runCliScript(__dirname + "/__scripts__/revert_help.sh", TEST_ENV);
+        expect(response.stderr.toString()).toBe("");
+        expect(response.stdout.toString()).toMatchSnapshot();
+        expect(response.status).toBe(0);
+    });
 
-  it("should fail without for-sure option", async () => {
-    const response = await runCliScript(__dirname + "/__scripts__/invalid_command.sh", TEST_ENV);
-    expect(response.stdout.toString()).toBe("");
-    expect(response.stderr.toString()).toMatchSnapshot();
-    expect(response.status).toBe(1);
-  });
+    it("should fail without for-sure option", async () => {
+        const response = await runCliScript(__dirname + "/__scripts__/invalid_command.sh", TEST_ENV);
+        expect(response.stdout.toString()).toBe("");
+        expect(response.stderr.toString()).toMatchSnapshot();
+        expect(response.status).toBe(1);
+    });
 
-  it("should fail if secure credential manager not enabled", async () => {
-    const response = await runCliScript(__dirname + "/__scripts__/invalid_credmgr.sh", TEST_ENV);
-    expect(response.stdout.toString()).toBe("");
-    expect(response.stderr.toString()).toMatchSnapshot();
-    expect(response.status).toBe(0);
-  });
+    it("should fail if secure credential manager not enabled", async () => {
+        const response = await runCliScript(__dirname + "/__scripts__/invalid_credmgr.sh", TEST_ENV);
+        expect(response.stdout.toString()).toBe("");
+        expect(response.stderr.toString()).toMatchSnapshot();
+        expect(response.status).toBe(0);
+    });
 });

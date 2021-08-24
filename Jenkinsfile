@@ -21,8 +21,8 @@ def PRODUCT_NAME = "Zowe CLI"
 
 node('zowe-jenkins-agent-dind') {
     // This plugin's tests requires the CLI be installed, so install the CLI
-    sh "npm config set @zowe:registry https://zowe.jfrog.io/zowe/api/npm/npm-local-release"
-    sh "npm install --global @zowe/cli"
+    // sh "npm config set @zowe:registry https://zowe.jfrog.io/zowe/api/npm/npm-local-release"
+    // sh "npm install --global @zowe/cli"
 
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)

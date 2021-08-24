@@ -18,19 +18,19 @@ import {Imperative} from "@zowe/imperative";
  */
 Imperative.init().then(() => {
 
-  // if we initialize, we can use our app logging space for debug messages and other logging
-  Imperative.api.appLogger.debug("Initialized successfully");
-  Imperative.api.additionalLogger("another").debug("First additional logger configured");
-  Imperative.api.additionalLogger("yetAnother").debug("Second additional logger configured");
-  // Imperative.api.defaultConsole.debug(inspect(Imperative.api));
+    // if we initialize, we can use our app logging space for debug messages and other logging
+    Imperative.api.appLogger.debug("Initialized successfully");
+    Imperative.api.additionalLogger("another").debug("First additional logger configured");
+    Imperative.api.additionalLogger("yetAnother").debug("Second additional logger configured");
+    // Imperative.api.defaultConsole.debug(inspect(Imperative.api));
 
-  // have imperative parse command arguments can give our handler control if everything is ok
-  Imperative.parse();
+    // have imperative parse command arguments can give our handler control if everything is ok
+    Imperative.parse();
 
 // handle any potential errors
 }).catch((e: Error) => {
 
-  // since imperative had an initialization error, we cannot use API methods
-  Imperative.console.fatal(require("util").inspect(e));
+    // since imperative had an initialization error, we cannot use API methods
+    Imperative.console.fatal(require("util").inspect(e));
 });
 

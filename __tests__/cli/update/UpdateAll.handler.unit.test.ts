@@ -11,11 +11,11 @@
 import UpdateAllHandler from "../../../src/cli/update/UpdateAll.handler";
 
 describe("UpdateAll Behavior", () => {
-  it("should load", async () => {
-    const handler = new UpdateAllHandler();
+    it("should load", async () => {
+        const handler = new UpdateAllHandler();
 
-    // await handler.process({});
+        // await handler.process({});
 
-    expect(true).toBe(true);
-  });
+        expect(true).toBe(true);
+    });
 });

@@ -12,13 +12,13 @@ import { ICommandDefinition } from "@zowe/imperative";
 import { Constants } from "../../imperative/Constants";
 
 export const RevertAllDefinition: ICommandDefinition = {
-  name: Constants.REVERT_CMD_NAME,
-  aliases: Constants.REVERT_CMD_ALIAS,
-  summary: Constants.REVERT_CMD_DESCRIPTION,
-  description: Constants.REVERT_CMD_DESCRIPTION,
-  type: "command",
-  handler: __dirname + "/RevertAll.handler",
-  options: [
-    Constants.REVERT_CMD_OPTION_FOR_SURE
-  ]
+    name: Constants.REVERT_CMD_NAME,
+    aliases: Constants.REVERT_CMD_ALIAS,
+    summary: Constants.REVERT_CMD_DESCRIPTION,
+    description: Constants.REVERT_CMD_DESCRIPTION,
+    type: "command",
+    handler: __dirname + "/RevertAll.handler",
+    options: [
+        Constants.REVERT_CMD_OPTION_FOR_SURE
+    ]
 };

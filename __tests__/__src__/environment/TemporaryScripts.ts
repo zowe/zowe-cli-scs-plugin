@@ -9,10 +9,10 @@
  */
 
 export class TemporaryScripts {
-  /**
-   * Shebang to generated start script files with
-   */
-  public static readonly SHEBANG = "#!/bin/bash\n\n";
+    /**
+     * Shebang to generated start script files with
+     */
+    public static readonly SHEBANG = "#!/bin/bash\n\n";
 
-  public static readonly ZOWE_BIN = "zowe";
+    public static readonly ZOWE_BIN = "zowe";
 }

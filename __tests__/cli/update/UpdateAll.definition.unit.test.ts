@@ -11,11 +11,11 @@
 import { ICommandDefinition } from "@zowe/imperative";
 
 describe("secure-credential-store update command definition", () => {
-  it("should not have changed", () => {
-    const definition: ICommandDefinition = require("../../../src/cli/update/UpdateAll.definition").UpdateAllDefinition;
-    expect(definition).toBeDefined();
-    delete definition.handler;
-    delete definition.children;
-    expect(definition).toMatchSnapshot();
-  });
+    it("should not have changed", () => {
+        const definition: ICommandDefinition = require("../../../src/cli/update/UpdateAll.definition").UpdateAllDefinition;
+        expect(definition).toBeDefined();
+        delete definition.handler;
+        delete definition.children;
+        expect(definition).toMatchSnapshot();
+    });
 });

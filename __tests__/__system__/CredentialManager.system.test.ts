@@ -15,25 +15,25 @@ import {runCliScript} from "../__src__/TestUtils";
 import * as C from "../__src__/KeytarConstants";
 
 describe("Credential Manager Plugin", () => {
-  let TEST_ENV: ITestEnvironment;
+    let TEST_ENV: ITestEnvironment;
 
-  // Create the unique test environment
-  beforeAll(async () => {
-    TEST_ENV = await TestEnvironment.setUp({
-      installPlugin: true,
-      tempProfileTypes: ["zosmf"],
-      testName: "cm_tests"
+    // Create the unique test environment
+    beforeAll(async () => {
+        TEST_ENV = await TestEnvironment.setUp({
+            installPlugin: true,
+            tempProfileTypes: ["zosmf"],
+            testName: "cm_tests"
+        });
     });
-  });
 
-  afterAll(async () => {
-    await TestEnvironment.cleanUp(TEST_ENV);
-  });
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(TEST_ENV);
+    });
 
-  it("should store credentials securely", () => {
-    const response = runCliScript(__dirname + "/__scripts__/cm_create.sh", TEST_ENV);
-    expect(response.status).toBe(0);
-    expect(response.stderr.toString()).toEqual("");
-    expect(response.stdout.toString()).toContain(C.SIGNATURE);
-  });
+    it("should store credentials securely", () => {
+        const response = runCliScript(__dirname + "/__scripts__/cm_create.sh", TEST_ENV);
+        expect(response.status).toBe(0);
+        expect(response.stderr.toString()).toEqual("");
+        expect(response.stdout.toString()).toContain(C.SIGNATURE);
+    });
 });
