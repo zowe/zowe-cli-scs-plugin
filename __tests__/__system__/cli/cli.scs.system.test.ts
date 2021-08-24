@@ -16,29 +16,29 @@ let TEST_ENV: ITestEnvironment;
 
 describe("secure-credential-store command", () => {
 
-  // Create the unique test environment
-  beforeAll(async () => {
-    TEST_ENV = await TestEnvironment.setUp({
-      installPlugin: true,
-      testName: "root_command"
+    // Create the unique test environment
+    beforeAll(async () => {
+        TEST_ENV = await TestEnvironment.setUp({
+            installPlugin: true,
+            testName: "root_command"
+        });
     });
-  });
 
-  afterAll(async () => {
-    await TestEnvironment.cleanUp(TEST_ENV);
-  });
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(TEST_ENV);
+    });
 
-  it("should display the help", () => {
-    const response = runCliScript(__dirname + "/__scripts__/root_help.sh", TEST_ENV);
-    expect(response.stdout.toString()).toMatchSnapshot();
-    expect(response.stderr.toString()).toBe("");
-    expect(response.status).toBe(0);
-  });
+    it("should display the help", () => {
+        const response = runCliScript(__dirname + "/__scripts__/root_help.sh", TEST_ENV);
+        expect(response.stdout.toString()).toMatchSnapshot();
+        expect(response.stderr.toString()).toBe("");
+        expect(response.status).toBe(0);
+    });
 
-  it("should fail with invalid command", async () => {
-    const response = runCliScript(__dirname + "/__scripts__/invalid_command.sh", TEST_ENV);
-    expect(response.stderr.toString()).toMatchSnapshot();
-    expect(response.stdout.toString()).toBe("");
-    expect(response.status).toBe(1);
-  });
+    it("should fail with invalid command", async () => {
+        const response = runCliScript(__dirname + "/__scripts__/invalid_command.sh", TEST_ENV);
+        expect(response.stderr.toString()).toMatchSnapshot();
+        expect(response.stdout.toString()).toBe("");
+        expect(response.status).toBe(1);
+    });
 });

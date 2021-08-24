@@ -12,10 +12,10 @@ import { ICommandDefinition } from "@zowe/imperative";
 import { Constants } from "../../imperative/Constants";
 
 export const UpdateAllDefinition: ICommandDefinition = {
-  name: Constants.UPDATE_CMD_NAME,
-  aliases: Constants.UPDATE_CMD_ALIAS,
-  summary: Constants.UPDATE_CMD_DESCRIPTION,
-  description: Constants.UPDATE_CMD_DESCRIPTION,
-  type: "command",
-  handler: __dirname + "/UpdateAll.handler"
+    name: Constants.UPDATE_CMD_NAME,
+    aliases: Constants.UPDATE_CMD_ALIAS,
+    summary: Constants.UPDATE_CMD_DESCRIPTION,
+    description: Constants.UPDATE_CMD_DESCRIPTION,
+    type: "command",
+    handler: __dirname + "/UpdateAll.handler"
 };

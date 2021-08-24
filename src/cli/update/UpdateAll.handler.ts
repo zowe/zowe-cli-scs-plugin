@@ -13,7 +13,7 @@ import BaseScsHandler from "../scs.shared.handler";
 
 
 export default class UpdateAllHandler implements ICommandHandler {
-  public async process(params: IHandlerParameters): Promise<void> {
-    await BaseScsHandler.updateProfiles(params, true);
-  }
+    public async process(params: IHandlerParameters): Promise<void> {
+        await BaseScsHandler.updateProfiles(params, true);
+    }
 }

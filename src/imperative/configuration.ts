@@ -14,19 +14,19 @@ import { RevertAllDefinition } from "../cli/revert/RevertAll.definition";
 import { UpdateAllDefinition } from "../cli/update/UpdateAll.definition";
 
 const config: IImperativeConfig = {
-  pluginSummary: Constants.PLUGIN_SUMMARY,
-  pluginHealthCheck: "./lib/imperative/healthCheckHandler",
-  pluginAliases: [Constants.ALIAS],
-  rootCommandDescription: Constants.PLUGIN_DESCRIPTION,
-  productDisplayName: Constants.DISPLAY_NAME,
-  name: Constants.NAME,
-  definitions: [
-    RevertAllDefinition,
-    UpdateAllDefinition
-  ],
-  overrides: {
-    CredentialManager: "./credentials/KeytarCredentialManager"
-  },
+    pluginSummary: Constants.PLUGIN_SUMMARY,
+    pluginHealthCheck: "./lib/imperative/healthCheckHandler",
+    pluginAliases: [Constants.ALIAS],
+    rootCommandDescription: Constants.PLUGIN_DESCRIPTION,
+    productDisplayName: Constants.DISPLAY_NAME,
+    name: Constants.NAME,
+    definitions: [
+        RevertAllDefinition,
+        UpdateAllDefinition
+    ],
+    overrides: {
+        CredentialManager: "./credentials/KeytarCredentialManager"
+    },
 };
 
 export = config;

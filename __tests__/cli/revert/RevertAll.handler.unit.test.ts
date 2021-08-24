@@ -11,11 +11,11 @@
 import RevertAllHandler from "../../../src/cli/revert/RevertAll.handler";
 
 describe("RevertAll Behavior", () => {
-  it("should load", async () => {
-    const handler = new RevertAllHandler();
+    it("should load", async () => {
+        const handler = new RevertAllHandler();
 
-    // await handler.process({});
+        // await handler.process({});
 
-    expect(true).toBe(true);
-  });
+        expect(true).toBe(true);
+    });
 });

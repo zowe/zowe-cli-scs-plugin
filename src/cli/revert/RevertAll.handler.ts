@@ -13,12 +13,12 @@ import BaseScsHandler from "../scs.shared.handler";
 
 
 export default class RevertAllHandler implements ICommandHandler {
-  public async process(params: IHandlerParameters): Promise<void> {
-    const success = await BaseScsHandler.updateProfiles(params, false);
+    public async process(params: IHandlerParameters): Promise<void> {
+        const success = await BaseScsHandler.updateProfiles(params, false);
 
-    if (success) {
-      params.response.console.log("\nSecure credential manager is still enabled for new profiles. To disable it, " +
+        if (success) {
+            params.response.console.log("\nSecure credential manager is still enabled for new profiles. To disable it, " +
         "uninstall this plugin or run \"zowe config reset CredentialManager\".");
+        }
     }
-  }
 }
