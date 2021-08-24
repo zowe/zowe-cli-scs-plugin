@@ -9,7 +9,7 @@
  */
 
 jest.mock("keytar");
-const keytar = require("keytar"); // tslint:disable-line
+const keytar = require("keytar");
 import KeytarCredentialManager = require("../../src/credentials/KeytarCredentialManager");
 
 import { AbstractCredentialManager } from "@zowe/imperative";
