@@ -56,8 +56,14 @@ Before you install and use the plug-in:
 
     For more information, see [Installing Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html).
 
-    **Note:** If you're using npm@7 on Windows, there is [an NPM bug]((https://github.com/npm/cli/issues/2659)) that requires you to install a prerequisite first: `npm install -g prebuild-install`
+-   NPM version 7 (npm@7) and NPM version 8 (npm@8) requirements:
 
+    On Windows operating systems, ensure that your computer is connected to the Internet and issue the following command before you install the SCS plug-in:
+
+    ```
+    npm install -g prebuild-install
+    ```
+    
 ### Linux (graphical)
 
 -   Install the packages `gnome-keyring` and `libsecret` (or `libsecret-1-0` on Debian and Ubuntu).
