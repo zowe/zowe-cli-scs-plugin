@@ -58,12 +58,12 @@ Before you install and use the plug-in:
 
 -   NPM version 7 (npm@7) and NPM version 8 (npm@8) requirements:
 
-    On Windows operating systems, ensure that your computer is connected to the Internet and issue the following command before you install the SCS plug-in:
+    On Windows operating systems, ensure that your computer is connected to the Internet and issue the following command before you install the plug-in:
 
     ```
     npm install -g prebuild-install
     ```
-    
+
 ### Linux (graphical)
 
 -   Install the packages `gnome-keyring` and `libsecret` (or `libsecret-1-0` on Debian and Ubuntu).
