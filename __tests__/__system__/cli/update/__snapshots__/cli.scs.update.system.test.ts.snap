@@ -30,7 +30,7 @@ exports[`secure-credential-store update command should display the help 1`] = `
 
    --help-examples  (boolean)
 
-      Display examples for all the commands in a the group
+      Display examples for all the commands in a group
 
    --help-web  | --hw (boolean)
 
@@ -40,9 +40,9 @@ exports[`secure-credential-store update command should display the help 1`] = `
   \\"success\\": true,
   \\"exitCode\\": 0,
   \\"message\\": \\"The help was constructed for command: update.\\",
-  \\"stdout\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   update | u\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Updates all plain text profiles to be securely stored\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe secure-credential-store update [options]\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a the group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n\\",
+  \\"stdout\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   update | u\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Updates all plain text profiles to be securely stored\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe secure-credential-store update [options]\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n\\",
   \\"stderr\\": \\"\\",
-  \\"data\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   update | u\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Updates all plain text profiles to be securely stored\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe secure-credential-store update [options]\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a the group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n\\"
+  \\"data\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   update | u\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Updates all plain text profiles to be securely stored\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe secure-credential-store update [options]\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n\\"
 }"
 `;
 
@@ -63,7 +63,7 @@ exports[`secure-credential-store update command should fail with invalid command
 "Command Error:
 Unknown argument: updateall
 Command failed due to improper syntax
-Command entered: \\"zowe secure-credential-store updateall\\"
+Command entered: \\"secure-credential-store updateall\\"
 Use \\"zowe secure-credential-store --help\\" to view groups, commands, and options.
 Error Details:
 Unknown argument: updateall

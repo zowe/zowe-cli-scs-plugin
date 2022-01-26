@@ -6,7 +6,7 @@ npm-debug.log
 lib
 lib_test
 .idea
-npm-shrinkwrap.json
+package-lock.json
 results/
 __results__/
 __tests__/__results__/
