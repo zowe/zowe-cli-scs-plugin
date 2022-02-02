@@ -47,7 +47,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "keytar": "7.7.0"
+    "keytar": "7.8.0"
   },
   "peerDependencies": {
     "@zowe/cli": "^6.0.0",
