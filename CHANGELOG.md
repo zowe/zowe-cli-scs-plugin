@@ -2,7 +2,7 @@
 
 All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `4.1.8`
 
 - BugFix: Added prebuilt Keytar binaries to the package for installation from registry. [#53](https://github.com/zowe/zowe-cli-scs-plugin/issues/53)
 - BugFix: Pruned dev dependencies from npm-shrinkwrap file.
