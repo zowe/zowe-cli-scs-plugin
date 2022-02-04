@@ -167,20 +167,10 @@ node('zowe-jenkins-agent-dind') {
         stage: {
             def packageJson = readJSON file: "package.json"
             def keytarVer = packageJson.dependencies['keytar']
-            def uploadUrlArtifactory = "https://zowe.jfrog.io/artifactory/libs-snapshot-local/org/zowe/cli/zowe-cli-prebuilds/keytar-${keytarVer}-prebuilds.tgz"
-
-            // If Keytar prebuilds TGZ doesn't exist yet on Artifactory, create and upload it
-            if (sh(returnStatus: true, script: "curl -fs --head ${uploadUrlArtifactory}") != 0) {
-                withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
-                    sh "bash jenkins/bundleKeytar.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
-                }
-
-                withCredentials([usernamePassword(credentialsId: 'zowe.jfrog.io', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh "curl -f -u ${USERNAME}:${PASSWORD} --data-binary \"@keytar-prebuilds.tgz\" -H \"Content-Type: application/x-gzip\" -X PUT ${uploadUrlArtifactory}"
-                }
-            } else {
-                echo "Skipping upload to Artifactory because \"keytar-${keytarVer}-prebuilds.tgz\" already exists"
+            withCredentials([usernamePassword(credentialsId: 'zowe-robot-github', usernameVariable: 'USERNAME', passwordVariable: 'TOKEN')]) {
+                sh "bash jenkins/bundleKeytar.sh ${keytarVer} \"${USERNAME}:${TOKEN}\""
             }
+            archiveArtifacts artifacts: "keytar-prebuilds.tgz"
         }
     )
 
