@@ -1,12 +1,12 @@
 {
   "name": "@zowe/secure-credential-store-for-zowe-cli",
-  "version": "4.1.8",
+  "version": "4.1.9",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "@zowe/secure-credential-store-for-zowe-cli",
-      "version": "4.1.8",
+      "version": "4.1.9",
       "hasInstallScript": true,
       "license": "EPL-2.0",
       "dependencies": {
