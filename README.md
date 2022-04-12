@@ -69,10 +69,10 @@ Before you install and use the plug-in:
 
 -   Run the commands below to unlock the Gnome keyring. The keyring must be unlocked again for each new user session.
 
-    The second command will prompt for your password. Press Ctrl+D when you have finished typing it.
+    The second command will prompt for your password. Press Ctrl+D twice when you have finished typing it.
     ```bash
     export $(dbus-launch)
-    gnome-keyring-daemon --unlock --components=secrets
+    gnome-keyring-daemon -r --unlock --components=secrets
     ```
 
 -   To automatically unlock the Gnome keyring at log on:
@@ -104,6 +104,8 @@ Before you install and use the plug-in:
 
         gnome-keyring-daemon --start --components=secrets
         ```
+    
+    1. Reboot your machine and run a Zowe CLI command that uses secure credentials to test that automatic unlock of the keyring works.
     
 ### zLinux
 
