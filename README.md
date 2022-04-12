@@ -105,6 +105,8 @@ Before you install and use the plug-in:
         gnome-keyring-daemon --start --components=secrets
         ```
     
+    1. Reboot your machine and run a Zowe CLI command that uses secure credentials to test that automatic unlock of the keyring works.
+    
 ### zLinux
 
 - Follow all installation steps above for Linux
