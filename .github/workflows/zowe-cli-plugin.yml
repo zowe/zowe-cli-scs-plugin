@@ -71,7 +71,6 @@ jobs:
       run: npm run test:system
 
     - name: Archive Results
-      id: upload
       if: ${{ always() && steps.build.outcome == 'success' }}
       uses: actions/upload-artifact@v2
       with:
