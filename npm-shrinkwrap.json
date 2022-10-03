@@ -1,12 +1,12 @@
 {
   "name": "@zowe/secure-credential-store-for-zowe-cli",
-  "version": "4.1.10",
+  "version": "4.1.10-update-workflows.202210032001",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "@zowe/secure-credential-store-for-zowe-cli",
-      "version": "4.1.10",
+      "version": "4.1.10-update-workflows.202210032001",
       "hasInstallScript": true,
       "license": "EPL-2.0",
       "dependencies": {
