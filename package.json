@@ -32,7 +32,7 @@
     "lint:tests": "eslint \"**/__tests__/**/*.ts\"",
     "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",
     "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile && npm run circularDependencyCheck",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build && bash ./scripts/bundleKeytar.sh",
     "test": "npm run test:unit",
     "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" ",
     "test:system": "env-cmd __tests__/__resources__/env/system.env jest .*/__system__/.* --coverage false --runInBand",
