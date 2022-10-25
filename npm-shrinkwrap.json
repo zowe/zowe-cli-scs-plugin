@@ -3115,7 +3115,6 @@
       "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.9.tgz",
       "integrity": "sha512-R0prvu0SvUJaxPBkh/8sjca28fQwrdwkK4MWMBPmSZGTBPHAaFRs5e91+klu9S1spA0GJl382u6yQyJ6U8XucQ==",
       "dev": true,
-      "license": "EPL-2.0",
       "dependencies": {
         "@types/yargs": "13.0.4",
         "@zowe/perf-timing": "1.0.7",
