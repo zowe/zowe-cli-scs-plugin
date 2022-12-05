@@ -2,6 +2,8 @@
 
 <img src="imgs/Zowe_ConformanceBadge_cli.png" width=25% alt="Zowe Conformance Badge"/>
 
+**Note:** This plugin is not supported for Zowe v2 LTS because the secure credential manager is now built in to Zowe CLI. As long as Zowe v1 LTS is supported, it is still maintained and will receive bug fixes and security patches.
+
 The Secure Credential Store Plug-in for Zowe CLI lets you store your credentials securely in the default credential manager in your computer's operating system.
 
 As a systems programmer or application developer, you can store your credentials securely to help prevent your user name and password from being compromised as a result of a malware attack or unlawful actions by others.
