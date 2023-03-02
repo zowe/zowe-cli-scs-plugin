@@ -3111,9 +3111,9 @@
       }
     },
     "node_modules/@zowe/imperative": {
-      "version": "4.18.9",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.9.tgz",
-      "integrity": "sha512-R0prvu0SvUJaxPBkh/8sjca28fQwrdwkK4MWMBPmSZGTBPHAaFRs5e91+klu9S1spA0GJl382u6yQyJ6U8XucQ==",
+      "version": "4.18.10",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.10.tgz",
+      "integrity": "sha512-Japhdukv8BEJPArZOiWVWuR8ZQ4Amsww0poHqL/KkOK6M5/P4VrvA/rWPU9p3r+j6cZKYywpgRtCSDbhIWm58A==",
       "dev": true,
       "dependencies": {
         "@types/yargs": "13.0.4",
@@ -3141,6 +3141,7 @@
         "readline-sync": "1.4.10",
         "semver": "5.7.0",
         "stack-trace": "0.0.10",
+        "which": "3.0.0",
         "wrap-ansi": "7.0.0",
         "yamljs": "0.3.0",
         "yargs": "15.3.1"
@@ -3208,6 +3209,21 @@
       "dev": true,
       "bin": {
         "semver": "bin/semver"
+      }
+    },
+    "node_modules/@zowe/imperative/node_modules/which": {
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/which/-/which-3.0.0.tgz",
+      "integrity": "sha512-nla//68K9NU6yRiwDY/Q8aU6siKlSs64aEC7+IV56QoAuyQT2ovsJcgGYGyqMOmI/CGN1BOR6mM5EN0FBO+zyQ==",
+      "dev": true,
+      "dependencies": {
+        "isexe": "^2.0.0"
+      },
+      "bin": {
+        "node-which": "bin/which.js"
+      },
+      "engines": {
+        "node": "^14.17.0 || ^16.13.0 || >=18.0.0"
       }
     },
     "node_modules/@zowe/perf-timing": {
@@ -18444,9 +18460,9 @@
       }
     },
     "@zowe/imperative": {
-      "version": "4.18.9",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.9.tgz",
-      "integrity": "sha512-R0prvu0SvUJaxPBkh/8sjca28fQwrdwkK4MWMBPmSZGTBPHAaFRs5e91+klu9S1spA0GJl382u6yQyJ6U8XucQ==",
+      "version": "4.18.10",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.10.tgz",
+      "integrity": "sha512-Japhdukv8BEJPArZOiWVWuR8ZQ4Amsww0poHqL/KkOK6M5/P4VrvA/rWPU9p3r+j6cZKYywpgRtCSDbhIWm58A==",
       "dev": true,
       "requires": {
         "@types/yargs": "13.0.4",
@@ -18474,6 +18490,7 @@
         "readline-sync": "1.4.10",
         "semver": "5.7.0",
         "stack-trace": "0.0.10",
+        "which": "3.0.0",
         "wrap-ansi": "7.0.0",
         "yamljs": "0.3.0",
         "yargs": "15.3.1"
@@ -18527,6 +18544,15 @@
           "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.0.tgz",
           "integrity": "sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==",
           "dev": true
+        },
+        "which": {
+          "version": "3.0.0",
+          "resolved": "https://registry.npmjs.org/which/-/which-3.0.0.tgz",
+          "integrity": "sha512-nla//68K9NU6yRiwDY/Q8aU6siKlSs64aEC7+IV56QoAuyQT2ovsJcgGYGyqMOmI/CGN1BOR6mM5EN0FBO+zyQ==",
+          "dev": true,
+          "requires": {
+            "isexe": "^2.0.0"
+          }
         }
       }
     },
