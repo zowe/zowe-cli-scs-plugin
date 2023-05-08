@@ -56,7 +56,7 @@ jobs:
 
     - name: Unlock Keyring
       if: ${{ always() && steps.build.outcome == 'success' && matrix.os == 'ubuntu-latest' }}
-      uses: t1m0thyj/unlock-keyring@master
+      uses: t1m0thyj/unlock-keyring@v1
 
     - name: Create System Test Properties
       if: ${{ always() && steps.build.outcome == 'success' }}
