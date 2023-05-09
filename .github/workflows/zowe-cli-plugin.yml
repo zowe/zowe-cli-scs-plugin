@@ -30,12 +30,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-
-    - name: Use NPM v8
-      run: npm install -g npm@8.5.3
 
     - name: Install Node Package Dependencies
       run: npm ci
@@ -82,7 +79,7 @@ jobs:
 
     - name: Upload Results to Codecov
       if: ${{ always() && steps.build.outcome == 'success' }}
-      uses: codecov/codecov-action@v1.0.7
+      uses: codecov/codecov-action@v3
       with:
         env_vars: OS,NODE
 
