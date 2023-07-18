@@ -2,6 +2,10 @@
 
 All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- BugFix: Updated semver transitive dependency to resolve a potential vulnerability.
+
 ## `4.1.10`
 
 - BugFix: Updated minimist transitive dependency to resolve a potential vulnerability.
