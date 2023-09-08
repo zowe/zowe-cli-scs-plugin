@@ -8,8 +8,8 @@
  * Copyright Contributors to the Zowe Project.
  */
 
-jest.mock("keytar");
-const keytar = require("keytar");
+jest.mock("@zowe/secrets-for-zowe-sdk");
+const keytar = require("@zowe/secrets-for-zowe-sdk").keyring;
 import KeytarCredentialManager = require("../../src/credentials/KeytarCredentialManager");
 
 import { AbstractCredentialManager } from "@zowe/imperative";

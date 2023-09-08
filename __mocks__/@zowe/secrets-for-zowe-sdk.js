@@ -8,10 +8,10 @@
  * Copyright Contributors to the Zowe Project.
  */
 
-// __mocks__/keytar.js
+// __mocks__/@zowe/secrets-for-zowe-sdk.js
 "use strict";
 
-const keytar = jest.genMockFromModule("keytar");
+const keytar = jest.genMockFromModule("@zowe/secrets-for-zowe-sdk").keyring;
 
 let mockKeyring = {};
 
@@ -55,4 +55,6 @@ keytar.getPassword = getPassword;
 keytar.setPassword = setPassword;
 keytar.deletePassword = deletePassword;
 
-module.exports = keytar;
+module.exports = {
+  keyring: keytar
+};
