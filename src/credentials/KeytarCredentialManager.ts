@@ -85,7 +85,7 @@ export = class KeytarCredentialManager extends AbstractCredentialManager {
             this.keytar = (await import("@zowe/secrets-for-zowe-sdk")).keyring;
         } catch (error) {
             this.loadError = new ImperativeError({
-                msg: "Keytar not Installed",
+                msg: "Secrets SDK not Installed",
                 causeErrors: error
             });
         }
@@ -211,7 +211,7 @@ export = class KeytarCredentialManager extends AbstractCredentialManager {
         if (this.keytar == null) {
             if (this.loadError == null) {
                 throw new ImperativeError({
-                    msg: "Keytar was not properly loaded due to an unknown cause."
+                    msg: "Secrets SDK was not properly loaded due to an unknown cause."
                 }, { suppressReport: true });
             } else {
                 throw this.loadError;
