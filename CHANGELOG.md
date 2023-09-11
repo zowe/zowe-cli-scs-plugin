@@ -2,6 +2,10 @@
 
 All notable changes to the Secure Credential Store Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- BugFix: Use `keyring` module from `@zowe/secrets-for-zowe-sdk` as replacement for `keytar`.
+
 ## `4.1.11`
 
 - BugFix: Updated semver transitive dependency for technical currency.
