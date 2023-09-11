@@ -23,7 +23,7 @@
         "@typescript-eslint/eslint-plugin": "^4.29.3",
         "@typescript-eslint/parser": "^4.29.3",
         "@zowe/cli": "6.40.0",
-        "@zowe/imperative": "^4.18.16",
+        "@zowe/imperative": "^4.18.18",
         "coveralls": "^3.0.7",
         "env-cmd": "^8.0.2",
         "eslint": "^7.32.0",
@@ -3111,9 +3111,9 @@
       }
     },
     "node_modules/@zowe/imperative": {
-      "version": "4.18.16",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.16.tgz",
-      "integrity": "sha512-IvL0T2rlGpPZ0K51QO5HOuL6OHgcLWwoyX0VwJrphE89k2pZeY6Bp/pXXsjjKKJat8KOReSqM2Ip8/WZhNrxow==",
+      "version": "4.18.18",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.18.tgz",
+      "integrity": "sha512-QoWqem4WuEyoVGdKLVtG/mwDrw6caXQHuFnbEtBC7bNFA6rfAO7aysGRo2mIu9ujZ7r5aLBjTh+CtuGT2BmBjw==",
       "dev": true,
       "dependencies": {
         "@types/yargs": "13.0.4",
@@ -3140,7 +3140,7 @@
         "prettyjson": "1.2.2",
         "progress": "2.0.3",
         "readline-sync": "1.4.10",
-        "semver": "5.7.0",
+        "semver": "5.7.2",
         "stack-trace": "0.0.10",
         "which": "3.0.0",
         "wrap-ansi": "7.0.0",
@@ -3242,9 +3242,9 @@
       }
     },
     "node_modules/@zowe/imperative/node_modules/semver": {
-      "version": "5.7.0",
-      "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.0.tgz",
-      "integrity": "sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==",
+      "version": "5.7.2",
+      "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+      "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
       "dev": true,
       "bin": {
         "semver": "bin/semver"
@@ -18217,9 +18217,9 @@
       }
     },
     "@zowe/imperative": {
-      "version": "4.18.16",
-      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.16.tgz",
-      "integrity": "sha512-IvL0T2rlGpPZ0K51QO5HOuL6OHgcLWwoyX0VwJrphE89k2pZeY6Bp/pXXsjjKKJat8KOReSqM2Ip8/WZhNrxow==",
+      "version": "4.18.18",
+      "resolved": "https://zowe.jfrog.io/zowe/api/npm/npm-release/@zowe/imperative/-/@zowe/imperative-4.18.18.tgz",
+      "integrity": "sha512-QoWqem4WuEyoVGdKLVtG/mwDrw6caXQHuFnbEtBC7bNFA6rfAO7aysGRo2mIu9ujZ7r5aLBjTh+CtuGT2BmBjw==",
       "dev": true,
       "requires": {
         "@types/yargs": "13.0.4",
@@ -18246,7 +18246,7 @@
         "prettyjson": "1.2.2",
         "progress": "2.0.3",
         "readline-sync": "1.4.10",
-        "semver": "5.7.0",
+        "semver": "5.7.2",
         "stack-trace": "0.0.10",
         "which": "3.0.0",
         "wrap-ansi": "7.0.0",
@@ -18326,9 +18326,9 @@
           "dev": true
         },
         "semver": {
-          "version": "5.7.0",
-          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.0.tgz",
-          "integrity": "sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==",
+          "version": "5.7.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-5.7.2.tgz",
+          "integrity": "sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==",
           "dev": true
         },
         "shebang-command": {
