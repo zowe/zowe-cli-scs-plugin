@@ -14,7 +14,8 @@
     "registry": "https://zowe.jfrog.io/zowe/api/npm/npm-local-release/"
   },
   "files": [
-    "lib"
+    "lib",
+    "npm-shrinkwrap.json"
   ],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
